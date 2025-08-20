@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar Membros - Network Like a Coders</title>
+    <meta name="description" content="Encontre e conecte-se com outras mulheres na tecnologia em nossa comunidade.">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <i class="fas fa-users"></i>
+                <span>United Girls Society</span>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Início</a></li>
+                <li><a href="about.html" class="nav-link">Sobre</a></li>
+                <li><a href="opportunities.html" class="nav-link">Oportunidades</a></li>
+                <li><a href="testimonies.html" class="nav-link">Testemunhos</a></li>
+                <li><a href="gallery.html" class="nav-link">Galeria</a></li>
+                <li><a href="gratitude.html" class="nav-link">Agradecimentos</a></li>
+                <li><a href="search.html" class="nav-link active">Buscar</a></li>
+                <li><a href="contact.html" class="nav-link">Contato</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button id="login-btn" class="login-btn">
+                    <i class="fab fa-google"></i>
+                    Entrar
+                </button>
+                <div id="user-profile" class="user-profile hidden">
+                    <img id="user-avatar" class="user-avatar" alt="Avatar do usuário">
+                    <span id="user-name" class="user-name"></span>
+                    <button id="logout-btn" class="logout-btn">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <button class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main class="main">
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="page-header-content">
+                <h1 class="page-title">Buscar Membros</h1>
+                <p class="page-description">
+                    Encontre e conecte-se com outras mulheres incríveis em nossa comunidade de tecnologia
+                </p>
+            </div>
+        </section>
+
+        <!-- Community Stats Section -->
+        <section class="community-stats-section">
+            <div class="content-section">
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-number" id="total-members">250+</div>
+                        <div class="stat-label">Membros Ativas</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="stat-number" id="total-cities">15+</div>
+                        <div class="stat-label">Cidades</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="stat-number" id="total-skills">50+</div>
+                        <div class="stat-label">Habilidades</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <div class="stat-number" id="total-connections">1000+</div>
+                        <div class="stat-label">Conexões</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search Section -->
+        <section class="search-section">
+            <div class="content-section">
+                <div class="search-container">
+                    <div class="search-bar">
+                        <div class="search-input-group">
+                            <i class="fas fa-search search-icon"></i>
+                            <input type="text" id="search-input" placeholder="Buscar por nome, habilidade ou localização..." class="search-input">
+                            <button id="clear-search" class="clear-search hidden">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <div class="search-suggestions" id="search-suggestions">
+                            <!-- Dynamic suggestions will appear here -->
+                        </div>
+                    </div>
+                    
+                    <div class="search-filters">
+                        <div class="filter-group">
+                            <label for="skill-filter">Habilidade:</label>
+                            <select id="skill-filter" class="filter-select">
+                                <option value="">Todas as habilidades</option>
+                                <option value="JavaScript">JavaScript</option>
+                                <option value="Python">Python</option>
+                                <option value="React">React</option>
+                                <option value="Design">Design</option>
+                                <option value="Data Science">Data Science</option>
+                                <option value="Mobile">Mobile</option>
+                                <option value="DevOps">DevOps</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label for="location-filter">Localização:</label>
+                            <select id="location-filter" class="filter-select">
+                                <option value="">Todas as localizações</option>
+                                <option value="Maputo">Maputo</option>
+                                <option value="Beira">Beira</option>
+                                <option value="Nampula">Nampula</option>
+                                <option value="Matola">Matola</option>
+                                <option value="Remoto">Remoto</option>
+                            </select>
+                        </div>
+                        
+                        <button id="reset-filters" class="btn btn-outline">
+                            <i class="fas fa-undo"></i>
+                            Limpar Filtros
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search Results -->
+        <section class="search-results-section">
+            <div class="content-section">
+                <div id="search-stats" class="search-stats">
+                    <!-- Search statistics will be shown here -->
+                </div>
+                
+                <div id="search-container" class="search-results-container">
+                    <!-- Loading state -->
+                    <div id="search-loading" class="loading-state">
+                        <div class="loading-spinner">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <p>Carregando membros...</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Search results will be loaded here -->
+                    <div id="search-results" class="search-results hidden">
+                        <!-- Dynamic content -->
+                    </div>
+                    
+                    <!-- Empty state -->
+                    <div id="search-empty" class="empty-state hidden">
+                        <div class="empty-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Nenhum membro encontrado</h3>
+                        <p>Tente ajustar os filtros de busca ou verifique a ortografia.</p>
+                    </div>
+                    
+                    <!-- No results state -->
+                    <div id="no-results" class="empty-state hidden">
+                        <div class="empty-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3>Nenhum resultado encontrado</h3>
+                        <p>Não encontramos membros que correspondam à sua busca. Tente termos diferentes.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="./about.html" class="bottom-nav-item">
+            <i class="fas fa-info-circle"></i>
+            <span>Sobre</span>
+        </a>
+        <a href="./opportunities.html" class="bottom-nav-item">
+            <i class="fas fa-briefcase"></i>
+            <span>Oportunidades</span>
+        </a>
+        <a href="./gallery.html" class="bottom-nav-item">
+            <i class="fas fa-home"></i>
+            <span>Início</span>
+        </a>
+        <a href="./search.html" class="bottom-nav-item active">
+            <div class="nav-highlight">
+                <i class="fas fa-search"></i>
+                <div class="nav-glow"></div>
+            </div>
+            <span>Buscar</span>
+        </a>
+        <a href="./contact.html" class="bottom-nav-item">
+            <i class="fas fa-envelope"></i>
+            <span>Contato</span>
+        </a>
+    </nav>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>United Girls Society</h3>
+                <p>Conectando, inspirando e promovendo a colaboração entre mulheres na área de STEM/TI.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Links Rápidos</h4>
+                <ul class="footer-links">
+                    <li><a href="about.html">Sobre</a></li>
+                    <li><a href="opportunities.html">Oportunidades</a></li>
+                    <li><a href="testimonies.html">Testemunhos</a></li>
+                    <li><a href="gallery.html">Galeria</a></li>
+                    <li><a href="contact.html">Contato</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Agradecimentos</h4>
+                <p>Este projeto é dedicado à Escola Secundária de Inhamissa, em agradecimento à Vodacom, Machel Fidus Foundation e Digi Project.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 DAFEJY Technology. Todos os direitos reservados.</p>
+        </div>
+    </footer></footer>
+
+    <!-- User Profile Modal (for viewing other users) -->
+    <div id="user-modal" class="modal hidden">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div id="user-modal-content">
+                <!-- User profile content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Modal (own profile) -->
+    <div id="profile-modal" class="modal hidden">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h2>Perfil do Usuário</h2>
+            <form id="profile-form" class="profile-form">
+                <div class="form-group">
+                    <label for="profile-name">Nome Completo</label>
+                    <input type="text" id="profile-name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="profile-username">Nome de Usuário</label>
+                    <input type="text" id="profile-username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="profile-bio">Biografia</label>
+                    <textarea id="profile-bio" name="bio" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="profile-skills">Habilidades (separadas por vírgula)</label>
+                    <input type="text" id="profile-skills" name="skills" placeholder="JavaScript, Python, Design...">
+                </div>
+                <div class="form-group">
+                    <label for="profile-location">Localização</label>
+                    <input type="text" id="profile-location" name="location" placeholder="Maputo, Moçambique">
+                </div>
+                <button type="submit" class="btn btn-primary">Salvar Perfil</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay hidden">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Carregando...</p>
+        </div>
+    </div>
+
+    <!-- Firebase Scripts -->
+    <script type="module" src="firebase.js"></script>
+    <script type="module" src="script.js"></script>
+
+    <style>
+        /* Bottom Navigation Styles */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--background);
+            border-top: 2px solid var(--border);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: var(--spacing-sm) 0;
+            z-index: 1000;
+            box-shadow: 0 -2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .bottom-nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-muted);
+            transition: all var(--transition-normal);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-md);
+            min-width: 60px;
+            position: relative;
+        }
+
+        .bottom-nav-item:hover {
+            color: var(--primary);
+            background: rgba(230, 0, 0, 0.05);
+        }
+
+        .bottom-nav-item.active {
+            color: var(--primary);
+        }
+
+        .bottom-nav-item i {
+            font-size: 1.2rem;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .bottom-nav-item span {
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .nav-highlight {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), #ff6b6b);
+            border-radius: 50%;
+            box-shadow: 0 4px 20px rgba(230, 0, 0, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        .nav-highlight i {
+            color: white;
+            font-size: 1.4rem;
+            margin: 0;
+        }
+
+        .nav-glow {
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: linear-gradient(135deg, var(--primary), #ff6b6b);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes glow {
+            from { transform: scale(1); opacity: 0.3; }
+            to { transform: scale(1.1); opacity: 0.1; }
+        }
+
+        /* Community Stats Styles */
+        .community-stats-section {
+            padding: var(--spacing-xl) var(--spacing-lg);
+            background: linear-gradient(135deg, var(--primary), #ff6b6b);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .community-stats-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="90" cy="90" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            text-align: center;
+            transition: all var(--transition-normal);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .stat-icon {
+            background: rgba(255, 255, 255, 0.2);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--spacing-md);
+            font-size: 1.5rem;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Search-specific styles */
+        .search-section {
+            padding: var(--spacing-xl) var(--spacing-lg);
+            background: var(--surface);
+        }
+        
+        .search-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .search-bar {
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .search-input-group {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: var(--spacing-md);
+            color: var(--text-muted);
+            z-index: 1;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: var(--spacing-md) var(--spacing-md) var(--spacing-md) 3rem;
+            border: 2px solid var(--border);
+            border-radius: var(--radius-lg);
+            font-size: 1.1rem;
+            background: var(--background);
+            transition: all var(--transition-fast);
+        }
+        
+        .search-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(230, 0, 0, 0.1);
+        }
+
+        .search-suggestions {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--background);
+            border: 2px solid var(--border);
+            border-top: none;
+            border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 10;
+            display: none;
+        }
+
+        .search-suggestions.show {
+            display: block;
+        }
+
+        .suggestion-item {
+            padding: var(--spacing-sm) var(--spacing-md);
+            cursor: pointer;
+            border-bottom: 1px solid var(--border);
+            transition: all var(--transition-fast);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .suggestion-item:hover {
+            background: var(--surface);
+            color: var(--primary);
+        }
+
+        .suggestion-item:last-child {
+            border-bottom: none;
+        }
+
+        .suggestion-icon {
+            color: var(--text-muted);
+            width: 16px;
+        }
+        
+        .clear-search {
+            position: absolute;
+            right: var(--spacing-md);
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: var(--spacing-xs);
+            border-radius: 50%;
+            transition: all var(--transition-fast);
+        }
+        
+        .clear-search:hover {
+            background: var(--surface);
+            color: var(--text-secondary);
+        }
+        
+        .search-filters {
+            display: flex;
+            gap: var(--spacing-lg);
+            align-items: end;
+            flex-wrap: wrap;
+        }
+        
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-xs);
+        }
+        
+        .filter-group label {
+            font-weight: 500;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+        }
+        
+        .filter-select {
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: 2px solid var(--border);
+            border-radius: var(--radius-md);
+            background: var(--background);
+            color: var(--text-primary);
+            min-width: 150px;
+        }
+        
+        .search-results-section {
+            padding: var(--spacing-xl) var(--spacing-lg);
+        }
+        
+        .search-stats {
+            margin-bottom: var(--spacing-lg);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .search-results-container {
+            min-height: 400px;
+        }
+        
+        .search-results {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+        
+        .member-card {
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            transition: all var(--transition-normal);
+            cursor: pointer;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .member-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+        
+        .member-header {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .member-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+        
+        .member-avatar-placeholder {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        
+        .member-info h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+            color: var(--text-primary);
+        }
+        
+        .member-username {
+            color: var(--primary);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .member-bio {
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: var(--spacing-md);
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .member-skills {
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .member-skills h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+            color: var(--text-primary);
+        }
+        
+        .skills-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-xs);
+        }
+        
+        .skill-tag {
+            background: var(--primary);
+            color: white;
+            padding: 2px var(--spacing-xs);
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .member-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border);
+            padding-top: var(--spacing-md);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        .member-location {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+        
+        .member-joined {
+            font-size: 0.8rem;
+        }
+        
+        /* Add spacing for bottom navigation */
+        main {
+            padding-bottom: 80px;
+        }
+
+        @media (max-width: 768px) {
+            .search-filters {
+                flex-direction: column;
+                align-items: stretch;
+                gap: var(--spacing-md);
+            }
+            
+            .filter-select {
+                min-width: auto;
+            }
+            
+            .search-results {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stat-card {
+                padding: var(--spacing-md);
+            }
+
+            .stat-number {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+
+    <script type="module">
+        import firebase from './firebase.js';
+        
+        let allUsers = [];
+        let filteredUsers = [];
+        
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadUsers();
+            setupSearchEvents();
+        });
+        
+        async function loadUsers() {
+            const loading = document.getElementById('search-loading');
+            const results = document.getElementById('search-results');
+            const empty = document.getElementById('search-empty');
+            
+            try {
+                allUsers = await firebase.getAllUsers();
+                filteredUsers = allUsers;
+                
+                loading.classList.add('hidden');
+                
+                if (allUsers.length === 0) {
+                    empty.classList.remove('hidden');
+                } else {
+                    results.classList.remove('hidden');
+                    renderUsers(filteredUsers);
+                    updateSearchStats(filteredUsers.length, allUsers.length);
+                }
+            } catch (error) {
+                console.error('Error loading users:', error);
+                loading.innerHTML = '<p>Erro ao carregar membros.</p>';
+            }
+        }
+        
+        function renderUsers(users) {
+            const results = document.getElementById('search-results');
+            const noResults = document.getElementById('no-results');
+            
+            if (users.length === 0) {
+                results.classList.add('hidden');
+                noResults.classList.remove('hidden');
+                return;
+            }
+            
+            results.classList.remove('hidden');
+            noResults.classList.add('hidden');
+            
+            results.innerHTML = users.map(user => `
+                <div class="member-card" data-user-id="${user.id}" onclick="openUserProfile('${user.id}')">
+                    <div class="member-header">
+                        ${user.photoURL ? 
+                            `<img src="${user.photoURL}" alt="${user.displayName}" class="member-avatar">` :
+                            `<div class="member-avatar-placeholder">${(user.displayName || user.username || 'U').charAt(0).toUpperCase()}</div>`
+                        }
+                        <div class="member-info">
+                            <h3>${user.displayName || user.username || 'Usuário'}</h3>
+                            <div class="member-username">@${user.username || user.email?.split('@')[0] || 'usuario'}</div>
+                        </div>
+                    </div>
+                    
+                    ${user.bio ? `
+                        <div class="member-bio">${user.bio}</div>
+                    ` : ''}
+                    
+                    ${user.skills && user.skills.length > 0 ? `
+                        <div class="member-skills">
+                            <h4>Habilidades:</h4>
+                            <div class="skills-tags">
+                                ${user.skills.slice(0, 4).map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
+                                ${user.skills.length > 4 ? `<span class="skill-tag">+${user.skills.length - 4}</span>` : ''}
+                            </div>
+                        </div>
+                    ` : ''}
+                    
+                    <div class="member-footer">
+                        ${user.location ? `
+                            <div class="member-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>${user.location}</span>
+                            </div>
+                        ` : '<div></div>'}
+                        <div class="member-joined">
+                            ${user.createdAt ? `Membro desde ${NetworkApp.formatDate(user.createdAt)}` : ''}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function setupSearchEvents() {
+            const searchInput = document.getElementById('search-input');
+            const clearSearch = document.getElementById('clear-search');
+            const skillFilter = document.getElementById('skill-filter');
+            const locationFilter = document.getElementById('location-filter');
+            const resetFilters = document.getElementById('reset-filters');
+            const suggestions = document.getElementById('search-suggestions');
+            
+            // Search input with debouncing
+            if (searchInput) {
+                searchInput.addEventListener('input', NetworkApp.debounce(handleSearch, 300));
+                searchInput.addEventListener('input', toggleClearButton);
+                searchInput.addEventListener('input', NetworkApp.debounce(showSearchSuggestions, 200));
+                searchInput.addEventListener('focus', showSearchSuggestions);
+                searchInput.addEventListener('blur', () => {
+                    setTimeout(() => hideSuggestions(), 200);
+                });
+            }
+            
+            if (clearSearch) {
+                clearSearch.addEventListener('click', clearSearchInput);
+            }
+            
+            if (skillFilter) {
+                skillFilter.addEventListener('change', handleSearch);
+            }
+            
+            if (locationFilter) {
+                locationFilter.addEventListener('change', handleSearch);
+            }
+            
+            if (resetFilters) {
+                resetFilters.addEventListener('click', resetAllFilters);
+            }
+        }
+        
+        function handleSearch() {
+            const searchTerm = document.getElementById('search-input').value.toLowerCase().trim();
+            const skillFilter = document.getElementById('skill-filter').value;
+            const locationFilter = document.getElementById('location-filter').value;
+            
+            filteredUsers = allUsers.filter(user => {
+                // Text search
+                const matchesSearch = !searchTerm || 
+                    (user.displayName && user.displayName.toLowerCase().includes(searchTerm)) ||
+                    (user.username && user.username.toLowerCase().includes(searchTerm)) ||
+                    (user.bio && user.bio.toLowerCase().includes(searchTerm)) ||
+                    (user.location && user.location.toLowerCase().includes(searchTerm)) ||
+                    (user.skills && user.skills.some(skill => skill.toLowerCase().includes(searchTerm)));
+                
+                // Skill filter
+                const matchesSkill = !skillFilter || 
+                    (user.skills && user.skills.some(skill => skill.toLowerCase().includes(skillFilter.toLowerCase())));
+                
+                // Location filter
+                const matchesLocation = !locationFilter || 
+                    (user.location && user.location.toLowerCase().includes(locationFilter.toLowerCase()));
+                
+                return matchesSearch && matchesSkill && matchesLocation;
+            });
+            
+            renderUsers(filteredUsers);
+            updateSearchStats(filteredUsers.length, allUsers.length);
+        }
+        
+        function toggleClearButton() {
+            const searchInput = document.getElementById('search-input');
+            const clearSearch = document.getElementById('clear-search');
+            
+            if (searchInput.value.trim()) {
+                clearSearch.classList.remove('hidden');
+            } else {
+                clearSearch.classList.add('hidden');
+            }
+        }
+        
+        function clearSearchInput() {
+            document.getElementById('search-input').value = '';
+            document.getElementById('clear-search').classList.add('hidden');
+            handleSearch();
+        }
+        
+        function resetAllFilters() {
+            document.getElementById('search-input').value = '';
+            document.getElementById('skill-filter').value = '';
+            document.getElementById('location-filter').value = '';
+            document.getElementById('clear-search').classList.add('hidden');
+            handleSearch();
+        }
+        
+        function updateSearchStats(filteredCount, totalCount) {
+            const stats = document.getElementById('search-stats');
+            if (stats) {
+                if (filteredCount === totalCount) {
+                    stats.textContent = `Mostrando ${totalCount} membros da comunidade`;
+                } else {
+                    stats.textContent = `Mostrando ${filteredCount} de ${totalCount} membros`;
+                }
+            }
+        }
+
+        function showSearchSuggestions() {
+            const searchInput = document.getElementById('search-input');
+            const suggestions = document.getElementById('search-suggestions');
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            
+            if (!searchTerm || searchTerm.length < 2) {
+                hideSuggestions();
+                return;
+            }
+            
+            // Generate suggestions based on available data
+            const skillSuggestions = ['JavaScript', 'Python', 'React', 'Design', 'Data Science', 'Mobile', 'DevOps']
+                .filter(skill => skill.toLowerCase().includes(searchTerm))
+                .slice(0, 3);
+            
+            const locationSuggestions = ['Maputo', 'Beira', 'Nampula', 'Matola', 'Remoto']
+                .filter(location => location.toLowerCase().includes(searchTerm))
+                .slice(0, 2);
+            
+            const allSuggestions = [
+                ...skillSuggestions.map(skill => ({ type: 'skill', text: skill, icon: 'fas fa-code' })),
+                ...locationSuggestions.map(location => ({ type: 'location', text: location, icon: 'fas fa-map-marker-alt' }))
+            ];
+            
+            if (allSuggestions.length > 0) {
+                suggestions.innerHTML = allSuggestions.map(suggestion => `
+                    <div class="suggestion-item" onclick="applySuggestion('${suggestion.type}', '${suggestion.text}')">
+                        <i class="${suggestion.icon} suggestion-icon"></i>
+                        <span>${suggestion.text}</span>
+                    </div>
+                `).join('');
+                suggestions.classList.add('show');
+            } else {
+                hideSuggestions();
+            }
+        }
+        
+        function hideSuggestions() {
+            const suggestions = document.getElementById('search-suggestions');
+            suggestions.classList.remove('show');
+        }
+        
+        window.applySuggestion = function(type, text) {
+            const searchInput = document.getElementById('search-input');
+            
+            if (type === 'skill') {
+                document.getElementById('skill-filter').value = text;
+            } else if (type === 'location') {
+                document.getElementById('location-filter').value = text;
+            }
+            
+            searchInput.value = text;
+            hideSuggestions();
+            handleSearch();
+        };
+        
+        window.openUserProfile = async function(userId) {
+            try {
+                NetworkApp.showLoading();
+                
+                const user = await firebase.getUserProfile(userId);
+                if (!user) {
+                    NetworkApp.showNotification('Perfil não encontrado.', 'error');
+                    return;
+                }
+                
+                // Get user's gallery items
+                const userPublications = await firebase.getGalleryItems();
+                const userGallery = userPublications.filter(item => item.userId === userId);
+                
+                const userModalContent = document.getElementById('user-modal-content');
+                userModalContent.innerHTML = `
+                    <div class="user-profile-view">
+                        <div class="profile-header">
+                            ${user.photoURL ? 
+                                `<img src="${user.photoURL}" alt="${user.displayName}" class="profile-avatar-large">` :
+                                `<div class="profile-avatar-large-placeholder">${(user.displayName || 'U').charAt(0).toUpperCase()}</div>`
+                            }
+                            <div class="profile-info">
+                                <h2>${user.displayName || user.username || 'Usuário'}</h2>
+                                <p class="profile-username">@${user.username || user.email?.split('@')[0] || 'usuario'}</p>
+                                ${user.location ? `
+                                    <p class="profile-location">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        ${user.location}
+                                    </p>
+                                ` : ''}
+                            </div>
+                        </div>
+                        
+                        ${user.bio ? `
+                            <div class="profile-section">
+                                <h3>Sobre</h3>
+                                <p>${user.bio}</p>
+                            </div>
+                        ` : ''}
+                        
+                        ${user.skills && user.skills.length > 0 ? `
+                            <div class="profile-section">
+                                <h3>Habilidades</h3>
+                                <div class="skills-tags">
+                                    ${user.skills.map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
+                                </div>
+                            </div>
+                        ` : ''}
+                        
+                        ${userGallery.length > 0 ? `
+                            <div class="profile-section">
+                                <h3>Publicações (${userGallery.length})</h3>
+                                <div class="user-gallery-preview">
+                                    ${userGallery.slice(0, 6).map(item => `
+                                        <div class="gallery-item-preview">
+                                            ${item.type === 'image' ? 
+                                                `<img src="${item.url}" alt="${item.title}">` :
+                                                `<video src="${item.url}" poster="${item.thumbnail || ''}"></video>`
+                                            }
+                                            <div class="item-overlay">
+                                                <h4>${item.title}</h4>
+                                            </div>
+                                        </div>
+                                    `).join('')}
+                                    ${userGallery.length > 6 ? `
+                                        <div class="more-items">
+                                            <span>+${userGallery.length - 6} mais</span>
+                                        </div>
+                                    ` : ''}
+                                </div>
+                            </div>
+                        ` : ''}
+                        
+                        <div class="profile-section">
+                            <div class="profile-stats">
+                                <div class="stat-item">
+                                    <span class="stat-number">${userGallery.length}</span>
+                                    <span class="stat-label">Publicações</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">${user.createdAt ? Math.floor((Date.now() - user.createdAt.toDate().getTime()) / (1000 * 60 * 60 * 24)) : 0}</span>
+                                    <span class="stat-label">Dias na comunidade</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                NetworkApp.openModal(document.getElementById('user-modal'));
+                
+            } catch (error) {
+                console.error('Error loading user profile:', error);
+                NetworkApp.showNotification('Erro ao carregar perfil do usuário.', 'error');
+            } finally {
+                NetworkApp.hideLoading();
+            }
+        };
+        
+        // Add styles for user profile modal
+        const style = document.createElement('style');
+        style.textContent = `
+            .user-profile-view {
+                max-width: 600px;
+            }
+            
+            .profile-header {
+                display: flex;
+                align-items: center;
+                gap: var(--spacing-lg);
+                margin-bottom: var(--spacing-xl);
+                padding-bottom: var(--spacing-lg);
+                border-bottom: 1px solid var(--border);
+            }
+            
+            .profile-avatar-large {
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                object-fit: cover;
+                flex-shrink: 0;
+            }
+            
+            .profile-avatar-large-placeholder {
+                width: 100px;
+                height: 100px;
+                background: var(--primary);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 2.5rem;
+                font-weight: 600;
+                flex-shrink: 0;
+            }
+            
+            .profile-info h2 {
+                font-size: 1.5rem;
+                font-weight: 600;
+                margin-bottom: var(--spacing-xs);
+                color: var(--text-primary);
+            }
+            
+            .profile-username {
+                color: var(--primary);
+                font-weight: 500;
+                margin-bottom: var(--spacing-sm);
+            }
+            
+            .profile-location {
+                color: var(--text-secondary);
+                display: flex;
+                align-items: center;
+                gap: var(--spacing-xs);
+            }
+            
+            .profile-section {
+                margin-bottom: var(--spacing-xl);
+            }
+            
+            .profile-section h3 {
+                font-size: 1.2rem;
+                font-weight: 600;
+                margin-bottom: var(--spacing-md);
+                color: var(--text-primary);
+            }
+            
+            .user-gallery-preview {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+                gap: var(--spacing-sm);
+            }
+            
+            .gallery-item-preview {
+                position: relative;
+                aspect-ratio: 1;
+                border-radius: var(--radius-sm);
+                overflow: hidden;
+                background: var(--surface);
+            }
+            
+            .gallery-item-preview img,
+            .gallery-item-preview video {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            
+            .item-overlay {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+                color: white;
+                padding: var(--spacing-xs);
+                font-size: 0.8rem;
+            }
+            
+            .more-items {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: var(--surface);
+                border-radius: var(--radius-sm);
+                color: var(--text-secondary);
+                font-weight: 500;
+                font-size: 0.9rem;
+            }
+            
+            .profile-stats {
+                display: flex;
+                gap: var(--spacing-xl);
+                justify-content: center;
+                text-align: center;
+            }
+            
+            .stat-item {
+                display: flex;
+                flex-direction: column;
+                gap: var(--spacing-xs);
+            }
+            
+            .stat-number {
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: var(--primary);
+            }
+            
+            .stat-label {
+                font-size: 0.9rem;
+                color: var(--text-secondary);
+            }
+            
+            @media (max-width: 768px) {
+                .profile-header {
+                    flex-direction: column;
+                    text-align: center;
+                }
+                
+                .user-gallery-preview {
+                    grid-template-columns: repeat(3, 1fr);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

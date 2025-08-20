@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre - Network Like a Coders</title>
+    <meta name="description" content="Conheça mais sobre o programa Code Like a Girl de Moçambique e a inspiração por trás da plataforma Network Like a Coders.">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header (same as index.html) -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <i class="fas fa-users"></i>
+                <span>United Girls Society</span>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Início</a></li>
+                <li><a href="about.html" class="nav-link active">Sobre</a></li>
+                <li><a href="opportunities.html" class="nav-link">Oportunidades</a></li>
+                <li><a href="testimonies.html" class="nav-link">Testemunhos</a></li>
+                <li><a href="gallery.html" class="nav-link">Galeria</a></li>
+                <li><a href="gratitude.html" class="nav-link">Agradecimentos</a></li>
+                <li><a href="search.html" class="nav-link">Buscar</a></li>
+                <li><a href="contact.html" class="nav-link">Contato</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button id="login-btn" class="login-btn">
+                    <i class="fab fa-google"></i>
+                    Entrar
+                </button>
+                <div id="user-profile" class="user-profile hidden">
+                    <img id="user-avatar" class="user-avatar" alt="Avatar do usuário">
+                    <span id="user-name" class="user-name"></span>
+                    <button id="logout-btn" class="logout-btn">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <button class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main class="main">
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="page-header-content">
+                <h1 class="page-title">Sobre o Programa</h1>
+                <p class="page-description">
+                    Conheça a inspiração por trás da plataforma Network Like a Coders e os programas que mudaram vidas através da tecnologia
+                </p>
+            </div>
+        </section>
+
+        <!-- About Content -->
+        <section class="content-section">
+            <div class="grid grid-2">
+                <!-- Code Like a Girl -->
+                <div class="card animate-fade-in-up">
+                    <div class="card-header">
+                        <i class="fas fa-female card-icon"></i>
+                        <h2 class="card-title">Code Like a Girl</h2>
+                    </div>
+                    <div class="card-content">
+                        <p>
+                            O programa Code Like a Girl de Moçambique é uma iniciativa transformadora que visa promover 
+                            a inclusão de mulheres na área de tecnologia. Através de workshops, mentorias e projetos práticos, 
+                            o programa tem capacitado centenas de jovens mulheres a desenvolverem suas habilidades em programação 
+                            e tecnologia.
+                        </p>
+                        <p>
+                            Este programa não apenas ensina habilidades técnicas, mas também constrói confiança, 
+                            promove networking e cria oportunidades reais de carreira na indústria tech moçambicana.
+                        </p>
+                        <div class="program-stats">
+                            <div class="stat">
+                                <span class="stat-number">200+</span>
+                                <span class="stat-label">Participantes</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">85%</span>
+                                <span class="stat-label">Taxa de Emprego</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">50+</span>
+                                <span class="stat-label">Empresas Parceiras</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Digi Project -->
+                <div class="card animate-fade-in-up">
+                    <div class="card-header">
+                        <i class="fas fa-laptop-code card-icon"></i>
+                        <h2 class="card-title">Digi Project</h2>
+                    </div>
+                    <div class="card-content">
+                        <p>
+                            O Digi Project é uma iniciativa inovadora focada na transformação digital e inclusão tecnológica. 
+                            O programa oferece formação em competências digitais essenciais, desde literacia digital básica 
+                            até programação avançada e empreendedorismo digital.
+                        </p>
+                        <p>
+                            Através de parcerias estratégicas e metodologias inovadoras, o Digi Project tem sido 
+                            fundamental na preparação de jovens para o mercado de trabalho digital emergente.
+                        </p>
+                        <div class="program-features">
+                            <div class="feature">
+                                <i class="fas fa-check"></i>
+                                <span>Literacia Digital</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-check"></i>
+                                <span>Programação Web</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-check"></i>
+                                <span>Empreendedorismo Digital</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-check"></i>
+                                <span>Mentoria Personalizada</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+
+        <!-- Our Mission -->
+        <section class="content-section">
+            <div class="mission-section">
+                <h2 class="section-title text-center">Nossa Missão</h2>
+                <div class="grid grid-3">
+                    <div class="mission-card">
+                        <div class="mission-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Conectar</h3>
+                        <p>
+                            Criar uma rede sólida de mulheres na tecnologia, promovendo conexões 
+                            significativas e oportunidades de colaboração.
+                        </p>
+                    </div>
+                    <div class="mission-card">
+                        <div class="mission-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3>Inspirar</h3>
+                        <p>
+                            Compartilhar histórias de sucesso e superação que motivem mais mulheres 
+                            a ingressarem e persistirem na área tech.
+                        </p>
+                    </div>
+                    <div class="mission-card">
+                        <div class="mission-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3>Impulsionar</h3>
+                        <p>
+                            Fornecer recursos, mentoria e oportunidades que acelerem o crescimento 
+                            profissional de mulheres em STEM.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Partners Section -->
+        <section class="partners-section">
+            <div class="partners-content">
+                <h2 class="section-title text-center">Nossos Parceiros Estratégicos</h2>
+                <div class="partners-detailed">
+                    <div class="partner-detailed">
+                        <div class="partner-logo-large">
+                            <img src="assets/logo-vodacom.svg" alt="Vodacom">
+                        </div>
+                        <div class="partner-description">
+                            <h3>Vodacom Moçambique</h3>
+                            <p>
+                                A Vodacom tem sido fundamental no apoio ao desenvolvimento tecnológico em Moçambique. 
+                                Através de iniciativas como o programa Code Like a Girl, a empresa demonstra seu 
+                                compromisso com a inclusão digital e o empoderamento feminino na tecnologia.
+                            </p>
+                            <a href="https://www.vodacom.co.mz" target="_blank" class="btn btn-outline">
+                                <i class="fas fa-external-link-alt"></i>
+                                Visitar Site
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="partner-detailed">
+                        <div class="partner-logo-large">
+                            <img src="assets/logo-machel.svg" alt="Machel Fidus Foundation">
+                        </div>
+                        <div class="partner-description">
+                            <h3>Machel Fidus Foundation</h3>
+                            <p>
+                                A fundação tem se dedicado ao desenvolvimento educacional e ao empoderamento de jovens. 
+                                Seu apoio a programas de tecnologia reflete o compromisso com a criação de oportunidades 
+                                sustentáveis para as novas gerações.
+                            </p>
+                            <a href="https://machelfidus.org" target="_blank" class="btn btn-outline">
+                                <i class="fas fa-external-link-alt"></i>
+                                Conhecer Mais
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (same as index.html) -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Network Like a Coders</h3>
+                <p>Conectando, inspirando e promovendo a colaboração entre mulheres na área de STEM/TI.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Links Rápidos</h4>
+                <ul class="footer-links">
+                    <li><a href="about.html">Sobre</a></li>
+                    <li><a href="opportunities.html">Oportunidades</a></li>
+                    <li><a href="testimonies.html">Testemunhos</a></li>
+                    <li><a href="gallery.html">Galeria</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Agradecimentos</h4>
+                <p>Este projeto é dedicado à Escola Secundária de Inhamissa, em agradecimento à Vodacom, Machel Fidus Foundation e Digi Project.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 DAFEJY Technology. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Profile Modal -->
+    <div id="profile-modal" class="modal hidden">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h2>Perfil do Usuário</h2>
+            <form id="profile-form" class="profile-form">
+                <div class="form-group">
+                    <label for="profile-name">Nome Completo</label>
+                    <input type="text" id="profile-name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="profile-username">Nome de Usuário</label>
+                    <input type="text" id="profile-username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="profile-bio">Biografia</label>
+                    <textarea id="profile-bio" name="bio" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="profile-skills">Habilidades (separadas por vírgula)</label>
+                    <input type="text" id="profile-skills" name="skills" placeholder="JavaScript, Python, Design...">
+                </div>
+                <div class="form-group">
+                    <label for="profile-location">Localização</label>
+                    <input type="text" id="profile-location" name="location" placeholder="Maputo, Moçambique">
+                </div>
+                <button type="submit" class="btn btn-primary">Salvar Perfil</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="./gallery.html" class="bottom-nav-item">
+            <i class="fas fa-home"></i>
+            <span>Comunidade</span>
+        </a>
+        <a href="./opportunities.html" class="bottom-nav-item">
+            <i class="fas fa-briefcase"></i>
+            <span>Oportunidades</span>
+        </a>
+        <a href="./testimonies.html" class="bottom-nav-item">
+            <i class="fas fa-quote-left"></i>
+            <span>Testemunhos</span>
+        </a>
+        <a href="./search.html" class="bottom-nav-item">
+            <i class="fas fa-search"></i>
+            <span>Buscar</span>
+        </a>
+        <a href="./index.html" class="bottom-nav-item active">
+            <i class="fas fa-info-circle"></i>
+            <span>Sobre</span>
+        </a>
+    </nav>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay hidden">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Carregando...</p>
+        </div>
+    </div>
+
+    <!-- Firebase Scripts -->
+    <script type="module" src="firebase.js"></script>
+    <script type="module" src="script.js"></script>
+
+    <style>
+        /* Additional styles for about page */
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .card-icon {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+        
+        .program-stats {
+            display: flex;
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid var(--border);
+        }
+        
+        .program-stats .stat {
+            text-align: center;
+        }
+        
+        .program-stats .stat-number {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .program-stats .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        
+        .program-features {
+            margin-top: var(--spacing-lg);
+        }
+        
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .feature i {
+            color: var(--success);
+        }
+        
+        .testimonial-section {
+            padding: var(--spacing-2xl) var(--spacing-lg);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
+            color: white;
+        }
+        
+        .testimonial-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-lg);
+            backdrop-filter: blur(10px);
+        }
+        
+        .testimonial-quote {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .testimonial-quote i {
+            font-size: 3rem;
+            opacity: 0.5;
+        }
+        
+        .testimonial-text {
+            font-size: 1.3rem;
+            font-style: italic;
+            line-height: 1.8;
+            margin-bottom: var(--spacing-xl);
+            text-align: center;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-lg);
+        }
+        
+        .author-info {
+            text-align: center;
+            width: 100%;
+        }
+        
+        .author-info h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .author-info p {
+            opacity: 0.9;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .author-social {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: center;
+        }
+        
+        .author-social .social-link {
+            background: rgba(255, 255, 255, 0.2);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-fast);
+        }
+        
+        .author-social .social-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .mission-section {
+            text-align: center;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-xl);
+            color: var(--text-primary);
+        }
+        
+        .mission-card {
+            text-align: center;
+            padding: var(--spacing-xl);
+        }
+        
+        .mission-icon {
+            background: var(--primary);
+            color: white;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--spacing-lg);
+        }
+        
+        .mission-icon i {
+            font-size: 2rem;
+        }
+        
+        .mission-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+            color: var(--text-primary);
+        }
+        
+        .partners-section {
+            padding: var(--spacing-2xl) var(--spacing-lg);
+            background-color: var(--surface);
+        }
+        
+        .partners-detailed {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .partner-detailed {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-2xl);
+            background: var(--background);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .partner-detailed:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .partner-logo-large {
+            flex-shrink: 0;
+        }
+        
+        .partner-logo-large img {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+        }
+        
+        .partner-description h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+            color: var(--text-primary);
+        }
+        
+        .partner-description p {
+            line-height: 1.8;
+            margin-bottom: var(--spacing-lg);
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 768px) {
+            .program-stats {
+                flex-direction: column;
+                gap: var(--spacing-md);
+            }
+            
+            .partner-detailed {
+                flex-direction: column !important;
+                text-align: center;
+            }
+            
+            .testimonial-text {
+                font-size: 1.1rem;
+            }
+            
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Like a Coders - Conectando Mulheres na Tecnologia</title>
+    <meta name="description" content="Plataforma de networking inspirada no programa Code Like a Girl de Moçambique, criada para conectar, inspirar e promover a colaboração entre mulheres na área de STEM/TI.">
+    
+    <!-- Open Graph tags -->
+    <meta property="og:title" content="Network Like a Coders - Conectando Mulheres na Tecnologia">
+    <meta property="og:description" content="Plataforma de networking para mulheres em STEM - inspirada pelo programa Code Like a Girl de Moçambique">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://network-like-coders.infinityfreeapp.com">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <i class="fas fa-users"></i>
+                <span>United Girls Society</span>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="about.html" class="nav-link">Sobre o Site</a></li>
+                <li><a href="gallery.html" class="nav-link active">Comunidade</a></li>
+                <li><a href="opportunities.html" class="nav-link">Oportunidades</a></li>
+                <li><a href="testimonies.html" class="nav-link">Testemunhos</a></li>
+                <li><a href="gratitude.html" class="nav-link">Agradecimentos</a></li>
+                <li><a href="search.html" class="nav-link">Buscar</a></li>
+                <li><a href="contact.html" class="nav-link">Contato</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button id="login-btn" class="login-btn">
+                    <i class="fab fa-google"></i>
+                    Entrar
+                </button>
+                <div id="user-profile" class="user-profile hidden">
+                    <img id="user-avatar" class="user-avatar" alt="Avatar do usuário">
+                    <span id="user-name" class="user-name"></span>
+                    <button id="logout-btn" class="logout-btn">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <button class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="highlight">United Girls Society</span><br>
+                    Empoderar. Conectar. Transformar.
+                </h1>
+                <p class="hero-subtitle">
+                    "Juntas somos mais fortes. Unidos pelos direitos das mulheres na tecnologia."
+                </p>
+                <p class="hero-description">
+                    Uma plataforma dedicada a promover os direitos das mulheres na tecnologia, conectando, 
+                    inspirando e criando oportunidades iguais para todas. Lutamos por um mundo tech mais 
+                    diverso, inclusivo e justo.
+                </p>
+                <div class="hero-actions">
+                    <a href="gallery.html" class="btn btn-primary">
+                        <i class="fas fa-users"></i>
+                        Entrar na Comunidade
+                    </a>
+                    <a href="about.html" class="btn btn-outline">
+                        <i class="fas fa-info-circle"></i>
+                        Sobre Nossa Missão
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Partners Banner -->
+        <section class="partners">
+            <div class="partners-content">
+                <h2 class="partners-title">Nossos Parceiros</h2>
+                <div class="partners-grid">
+                    <div class="partner-logo" data-partner="vodacom">
+                        <img src="assets/logo-vodacom.svg" alt="Vodacom" class="partner-img">
+                        <div class="partner-info">
+                            <h3>Vodacom</h3>
+                            <p>Conectando comunidades através da tecnologia</p>
+                        </div>
+                    </div>
+                    <div class="partner-logo" data-partner="machel">
+                        <img src="assets/logo-machel.svg" alt="Machel Fidus Foundation" class="partner-img">
+                        <div class="partner-info">
+                            <h3>Machel Fidus Foundation</h3>
+                            <p>Promovendo educação e desenvolvimento</p>
+                        </div>
+                    </div>
+                    <div class="partner-logo" data-partner="digi">
+                        <img src="assets/logo-digi.svg" alt="Digi Project" class="partner-img">
+                        <div class="partner-info">
+                            <h3>Digi Project</h3>
+                            <p>Transformando vidas através da tecnologia digital</p>
+                        </div>
+                    </div>
+                    <div class="partner-logo" data-partner="dafejy">
+                        <img src="assets/logo-dafejy.svg" alt="DAFEJY Technology" class="partner-img">
+                        <div class="partner-info">
+                            <h3>DAFEJY Technology</h3>
+                            <p>Inovação e desenvolvimento tecnológico</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Stats -->
+        <section class="stats">
+            <div class="stats-content">
+                <div class="stat-item">
+                    <div class="stat-number" id="users-count">0</div>
+                    <div class="stat-label">Mulheres Conectadas</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="testimonies-count">0</div>
+                    <div class="stat-label">Histórias de Sucesso</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="opportunities-count">0</div>
+                    <div class="stat-label">Oportunidades</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="publications-count">0</div>
+                    <div class="stat-label">Publicações</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Network Like a Coders</h3>
+                <p>Conectando, inspirando e promovendo a colaboração entre mulheres na área de STEM/TI.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Links Rápidos</h4>
+                <ul class="footer-links">
+                    <li><a href="about.html">Sobre</a></li>
+                    <li><a href="opportunities.html">Oportunidades</a></li>
+                    <li><a href="testimonies.html">Testemunhos</a></li>
+                    <li><a href="gallery.html">Galeria</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Agradecimentos</h4>
+                <p>Este projeto é dedicado à Escola Secundária de Inhamissa, em agradecimento à Vodacom, Machel Fidus Foundation e Digi Project.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 DAFEJY Technology. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="./gallery.html" class="bottom-nav-item active">
+            <i class="fas fa-home"></i>
+            <span>Comunidade</span>
+        </a>
+        <a href="./opportunities.html" class="bottom-nav-item">
+            <i class="fas fa-briefcase"></i>
+            <span>Oportunidades</span>
+        </a>
+        <a href="./testimonies.html" class="bottom-nav-item">
+            <i class="fas fa-quote-left"></i>
+            <span>Testemunhos</span>
+        </a>
+        <a href="./search.html" class="bottom-nav-item">
+            <i class="fas fa-search"></i>
+            <span>Buscar</span>
+        </a>
+        <a href="./index.html" class="bottom-nav-item">
+            <i class="fas fa-info-circle"></i>
+            <span>Sobre</span>
+        </a>
+    </nav>
+
+    <!-- Profile Modal -->
+    <div id="profile-modal" class="modal hidden">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h2>Perfil do Usuário</h2>
+            <form id="profile-form" class="profile-form">
+                <div class="form-group">
+                    <label for="profile-name">Nome Completo</label>
+                    <input type="text" id="profile-name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="profile-username">Nome de Usuário</label>
+                    <input type="text" id="profile-username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="profile-bio">Biografia</label>
+                    <textarea id="profile-bio" name="bio" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="profile-skills">Habilidades (separadas por vírgula)</label>
+                    <input type="text" id="profile-skills" name="skills" placeholder="JavaScript, Python, Design...">
+                </div>
+                <div class="form-group">
+                    <label for="profile-location">Localização</label>
+                    <input type="text" id="profile-location" name="location" placeholder="Maputo, Moçambique">
+                </div>
+                <button type="submit" class="btn btn-primary">Salvar Perfil</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay hidden">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Carregando...</p>
+        </div>
+    </div>
+
+    <!-- Firebase Scripts -->
+    <script type="module" src="firebase.js"></script>
+    <script type="module" src="script.js"></script>
+</body>
+</html>
