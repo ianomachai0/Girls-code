@@ -1,0 +1,413 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notificações - United Girls Society</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <i class="fas fa-users"></i>
+                <span>United Girls Society</span>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="about.html" class="nav-link">Sobre o Site</a></li>
+                <li><a href="gallery.html" class="nav-link">Comunidade</a></li>
+                <li><a href="opportunities.html" class="nav-link">Oportunidades</a></li>
+                <li><a href="testimonies.html" class="nav-link">Testemunhos</a></li>
+                <li><a href="learn.html" class="nav-link">Aprender</a></li>
+                <li><a href="notifications.html" class="nav-link active">
+                    <i class="fas fa-bell" id="nav-notification-icon"></i>
+                    Notificações
+                </li>
+                <li><a href="search.html" class="nav-link">Buscar</a></li>
+                <li><a href="contact.html" class="nav-link">Contato</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button id="login-btn" class="login-btn">
+                    <i class="fab fa-google"></i>
+                    Entrar
+                </button>
+                <div id="user-profile" class="user-profile hidden">
+                    <img id="user-avatar" class="user-avatar" alt="Avatar do usuário">
+                    <span id="user-name" class="user-name"></span>
+                    <button id="logout-btn" class="logout-btn">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="page-header">
+            <div class="page-header-content">
+                <h1 class="page-title">
+                    <i class="fas fa-bell"></i>
+                    Notificações
+                </h1>
+                <p class="page-description">
+                    Fique por dentro de todas as novidades da comunidade
+                </p>
+                <div class="notification-actions">
+                    <button id="mark-all-read" class="btn btn-outline">
+                        <i class="fas fa-check-double"></i>
+                        Marcar todas como lidas
+                    </button>
+                    <button id="clear-all" class="btn btn-outline">
+                        <i class="fas fa-trash"></i>
+                        Limpar todas
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="notifications-container">
+                <div class="notifications-tabs">
+                    <button class="tab-btn active" data-tab="all">Todas</button>
+                    <button class="tab-btn" data-tab="unread">Não lidas</button>
+                    <button class="tab-btn" data-tab="system">Sistema</button>
+                    <button class="tab-btn" data-tab="community">Comunidade</button>
+                </div>
+
+                <div id="notifications-list" class="notifications-list">
+                    <div class="loading-notifications">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>Carregando notificações...</p>
+                    </div>
+                </div>
+
+                <div id="no-notifications" class="no-notifications hidden">
+                    <i class="fas fa-bell-slash"></i>
+                    <h3>Nenhuma notificação</h3>
+                    <p>Você está em dia! Não há notificações no momento.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <nav class="bottom-nav">
+        <a href="./search.html" class="bottom-nav-item">
+            <i class="fas fa-search"></i>
+            <span>Pesquisar</span>
+        </a>
+        <a href="./learn.html" class="bottom-nav-item">
+            <i class="fas fa-graduation-cap"></i>
+            <span>Aprenda</span>
+        </a>
+        <a href="./notifications.html" class="bottom-nav-item active">
+            <i class="fas fa-bell" id="bottom-nav-notification-icon"></i>
+            <span>Notificações</span>
+        </a>
+        <a href="./gallery.html" class="bottom-nav-item nav-center">
+            <i class="fas fa-home"></i>
+            <span>Galeria</span>
+        </a>
+        <a href="./opportunities.html" class="bottom-nav-item">
+            <i class="fas fa-briefcase"></i>
+            <span>Oportunidades</span>
+        </a>
+        <a href="./gratitude.html" class="bottom-nav-item">
+            <i class="fas fa-heart"></i>
+            <span>Gratidão</span>
+        </a>
+        <a href="./testimonies.html" class="bottom-nav-item">
+            <i class="fas fa-quote-left"></i>
+            <span>Testemunhas</span>
+        </a>
+    </nav>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>United Girls Society</h3>
+                <p>Conectando, inspirando e promovendo a colaboração entre mulheres na área de STEM/TI.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 DAFEJY Technology. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <div id="loading-overlay" class="loading-overlay hidden">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Carregando...</p>
+        </div>
+    </div>
+
+    <script type="module" src="firebase.js"></script>
+    <script type="module" src="script.js"></script>
+    <script type="module" src="notifications.js"></script>
+
+    <style>
+        .notification-actions {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .notifications-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .notifications-tabs {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-xl);
+            border-bottom: 2px solid var(--border);
+            overflow-x: auto;
+        }
+
+        .tab-btn {
+            padding: var(--spacing-md) var(--spacing-lg);
+            border: none;
+            background: none;
+            color: var(--text-secondary);
+            border-bottom: 2px solid transparent;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            white-space: nowrap;
+        }
+
+        .tab-btn:hover {
+            color: var(--primary);
+        }
+
+        .tab-btn.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        .notifications-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .notification-item {
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            transition: all var(--transition-fast);
+            position: relative;
+        }
+
+        .notification-item.unread {
+            border-left: 4px solid var(--primary);
+            background: rgba(230, 0, 0, 0.02);
+        }
+
+        .notification-item:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .notification-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .notification-type {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .notification-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .notification-icon.system {
+            background: var(--primary);
+        }
+
+    <!-- Profile Modal -->
+    <div id="profile-modal" class="modal hidden">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h2>Perfil do Usuário</h2>
+            <form id="profile-form" class="profile-form">
+                <!-- Profile Photo Section -->
+                <div class="form-group profile-photo-section">
+                    <label>Foto de Perfil</label>
+                    <div class="profile-photo-container">
+                        <div class="current-photo">
+                            <img id="current-profile-photo" class="profile-photo-preview" src="" alt="Foto de perfil atual">
+                            <div id="no-photo-placeholder" class="no-photo-placeholder">
+                                <i class="fas fa-user"></i>
+                                <span>Sem foto</span>
+                            </div>
+                        </div>
+                        <div class="photo-upload-controls">
+                            <input type="file" id="profile-photo-input" accept="image/*" hidden>
+                            <button type="button" id="upload-photo-btn" class="btn btn-outline btn-sm">
+                                <i class="fas fa-camera"></i>
+                                Alterar Foto
+                            </button>
+                            <button type="button" id="remove-photo-btn" class="btn btn-outline btn-sm btn-danger hidden">
+                                <i class="fas fa-trash"></i>
+                                Remover
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="profile-name">Nome Completo</label>
+                    <input type="text" id="profile-name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="profile-username">Nome de Usuário</label>
+                    <input type="text" id="profile-username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="profile-bio">Biografia</label>
+                    <textarea id="profile-bio" name="bio" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="profile-skills">Habilidades (separadas por vírgula)</label>
+                    <input type="text" id="profile-skills" name="skills" placeholder="JavaScript, Python, Design...">
+                </div>
+                <div class="form-group">
+                    <label for="profile-location">Localização</label>
+                    <input type="text" id="profile-location" name="location" placeholder="Maputo, Moçambique">
+                </div>
+                <button type="submit" class="btn btn-primary">Salvar Perfil</button>
+            </form>
+        </div>
+    </div>
+
+
+        .notification-icon.community {
+            background: #8B5CF6;
+        }
+
+        .notification-icon.achievement {
+            background: #F59E0B;
+        }
+
+        .notification-time {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        .notification-content h4 {
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+            color: var(--text-primary);
+        }
+
+        .notification-content p {
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .notification-actions-item {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-md);
+        }
+
+        .notification-btn {
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border: 1px solid var(--border);
+            background: var(--background);
+            color: var(--text-secondary);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            font-size: 0.8rem;
+        }
+
+        .notification-btn:hover {
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .loading-notifications,
+        .no-notifications {
+            text-align: center;
+            padding: var(--spacing-2xl);
+            color: var(--text-secondary);
+        }
+
+        .loading-notifications i,
+        .no-notifications i {
+            font-size: 3rem;
+            margin-bottom: var(--spacing-md);
+            color: var(--text-muted);
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        /* Notification icon animation */
+        .notification-icon-active {
+            color: var(--primary) !important;
+            animation: bellRing 1s infinite;
+        }
+
+        @keyframes bellRing {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(15deg); }
+            75% { transform: rotate(-15deg); }
+        }
+
+        @media (max-width: 768px) {
+            .notifications-tabs {
+                justify-content: flex-start;
+            }
+
+            .tab-btn {
+                padding: var(--spacing-sm) var(--spacing-md);
+                font-size: 0.9rem;
+            }
+
+            .notification-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</body>
+</html>

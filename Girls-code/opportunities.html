@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oportunidades em STEM - Network Like a Coders</title>
+    <meta name="description" content="Descubra carreiras e oportunidades emocionantes na área de STEM e tecnologia para mulheres.">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <i class="fas fa-code"></i>
+                <span>Network Like a Coders</span>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Início</a></li>
+                <li><a href="about.html" class="nav-link">Sobre</a></li>
+                <li><a href="opportunities.html" class="nav-link active">Oportunidades</a></li>
+                <li><a href="testimonies.html" class="nav-link">Testemunhos</a></li>
+                <li><a href="gallery.html" class="nav-link">Galeria</a></li>
+                <li><a href="gratitude.html" class="nav-link">Agradecimentos</a></li>
+                <li><a href="search.html" class="nav-link">Buscar</a></li>
+                <li><a href="contact.html" class="nav-link">Contato</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button id="login-btn" class="login-btn">
+                    <i class="fab fa-google"></i>
+                    Entrar
+                </button>
+                <div id="user-profile" class="user-profile hidden">
+                    <img id="user-avatar" class="user-avatar" alt="Avatar do usuário">
+                    <span id="user-name" class="user-name"></span>
+                    <button id="logout-btn" class="logout-btn">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <button class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main class="main">
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="page-header-content">
+                <h1 class="page-title">Oportunidades em STEM</h1>
+                <p class="page-description">
+                    Explore carreiras emocionantes e oportunidades de crescimento na área de ciência, tecnologia, engenharia e matemática
+                </p>
+                <div class="opportunities-actions" id="admin-actions" style="display: none;">
+                    <button id="add-opportunity-btn" class="btn btn-primary">
+                        <i class="fas fa-plus"></i>
+                        Adicionar Oportunidade
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Opportunities Content -->
+        <section class="content-section">
+            <div id="opportunities-container" class="opportunities-container">
+                <!-- Loading state -->
+                <div id="opportunities-loading" class="loading-state">
+                    <div class="loading-spinner">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>Carregando oportunidades...</p>
+                    </div>
+                </div>
+                
+                <!-- Opportunities will be loaded here -->
+                <div id="opportunities-list" class="opportunities-list hidden">
+                    <!-- Dynamic content -->
+                </div>
+                
+                <!-- Empty state -->
+                <div id="opportunities-empty" class="empty-state hidden">
+                    <div class="empty-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Nenhuma oportunidade disponível</h3>
+                    <p>Novas oportunidades serão adicionadas em breve. Fique atenta!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Career Paths Section -->
+        <section class="career-paths-section">
+            <div class="content-section">
+                <h2 class="section-title text-center">Caminhos de Carreira em STEM</h2>
+                <div class="career-paths-grid">
+                    <div class="career-path">
+                        <div class="career-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3>Desenvolvimento de Software</h3>
+                        <p>Crie aplicações, websites e sistemas que transformam ideias em realidade digital.</p>
+                        <ul class="career-skills">
+                            <li>Programação</li>
+                            <li>Design de Software</li>
+                            <li>DevOps</li>
+                            <li>Testes de Software</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="career-path">
+                        <div class="career-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>Ciência de Dados</h3>
+                        <p>Transforme dados em insights valiosos usando análise estatística e machine learning.</p>
+                        <ul class="career-skills">
+                            <li>Estatística</li>
+                            <li>Machine Learning</li>
+                            <li>Visualização de Dados</li>
+                            <li>Big Data</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="career-path">
+                        <div class="career-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Cibersegurança</h3>
+                        <p>Proteja sistemas e dados contra ameaças digitais em um mundo cada vez mais conectado.</p>
+                        <ul class="career-skills">
+                            <li>Segurança de Redes</li>
+                            <li>Análise de Vulnerabilidades</li>
+                            <li>Forense Digital</li>
+                            <li>Gestão de Riscos</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="career-path">
+                        <div class="career-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h3>UX/UI Design</h3>
+                        <p>Projete experiências digitais intuitivas e envolventes para os usuários.</p>
+                        <ul class="career-skills">
+                            <li>Design de Interface</li>
+                            <li>Pesquisa de Usuário</li>
+                            <li>Prototipagem</li>
+                            <li>Design Thinking</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="career-path">
+                        <div class="career-icon">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <h3>Engenharia de Sistemas</h3>
+                        <p>Projete e mantenha infraestruturas tecnológicas robustas e escaláveis.</p>
+                        <ul class="career-skills">
+                            <li>Arquitetura de Sistemas</li>
+                            <li>Cloud Computing</li>
+                            <li>Redes de Computadores</li>
+                            <li>Automação</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="career-path">
+                        <div class="career-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>Desenvolvimento Mobile</h3>
+                        <p>Desenvolva aplicações móveis inovadoras para Android e iOS.</p>
+                        <ul class="career-skills">
+                            <li>React Native</li>
+                            <li>Flutter</li>
+                            <li>Design Mobile</li>
+                            <li>APIs Mobile</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Development Section -->
+        <section class="skills-section">
+            <div class="content-section">
+                <h2 class="section-title text-center">Como Desenvolver suas Habilidades</h2>
+                <div class="skills-timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker">1</div>
+                        <div class="timeline-content">
+                            <h3>Fundamentos</h3>
+                            <p>Comece com os conceitos básicos de programação, matemática e lógica.</p>
+                            <ul>
+                                <li>Cursos online gratuitos</li>
+                                <li>Tutoriais em vídeo</li>
+                                <li>Livros e documentação</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker">2</div>
+                        <div class="timeline-content">
+                            <h3>Prática</h3>
+                            <p>Aplique seus conhecimentos em projetos práticos e desafios de código.</p>
+                            <ul>
+                                <li>Projetos pessoais</li>
+                                <li>Hackathons</li>
+                                <li>Contribuições open source</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker">3</div>
+                        <div class="timeline-content">
+                            <h3>Networking</h3>
+                            <p>Conecte-se com profissionais da área e participe de comunidades.</p>
+                            <ul>
+                                <li>Eventos tech</li>
+                                <li>Grupos de estudo</li>
+                                <li>Mentoria</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker">4</div>
+                        <div class="timeline-content">
+                            <h3>Especialização</h3>
+                            <p>Aprofunde-se em uma área específica e desenvolva expertise.</p>
+                            <ul>
+                                <li>Certificações</li>
+                                <li>Cursos avançados</li>
+                                <li>Projetos complexos</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="./search.html" class="bottom-nav-item">
+            <i class="fas fa-search"></i>
+            <span>Pesquisar</span>
+        </a>
+        <a href="./learn.html" class="bottom-nav-item">
+            <i class="fas fa-graduation-cap"></i>
+            <span>Aprenda</span>
+        </a>
+        <a href="./notifications.html" class="bottom-nav-item">
+            <i class="fas fa-bell"></i>
+            <span>Notificações</span>
+        </a>
+        <a href="./gallery.html" class="bottom-nav-item nav-center">
+            <i class="fas fa-home"></i>
+            <span>Galeria</span>
+        </a>
+        <a href="./opportunities.html" class="bottom-nav-item active">
+            <i class="fas fa-briefcase"></i>
+            <span>Oportunidades</span>
+        </a>
+        <a href="./gratitude.html" class="bottom-nav-item">
+            <i class="fas fa-heart"></i>
+            <span>Gratidão</span>
+        </a>
+        <a href="./testimonies.html" class="bottom-nav-item">
+            <i class="fas fa-quote-left"></i>
+            <span>Testemunhas</span>
+        </a>
+    </nav>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Network Like a Coders</h3>
+                <p>Conectando, inspirando e promovendo a colaboração entre mulheres na área de STEM/TI.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Links Rápidos</h4>
+                <ul class="footer-links">
+                    <li><a href="about.html">Sobre</a></li>
+                    <li><a href="opportunities.html">Oportunidades</a></li>
+                    <li><a href="testimonies.html">Testemunhos</a></li>
+                    <li><a href="gallery.html">Galeria</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Agradecimentos</h4>
+                <p>Este projeto é dedicado à Escola Secundária de Inhamissa, em agradecimento à Vodacom, Machel Fidus Foundation e Digi Project.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 DAFEJY Technology. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Add Opportunity Modal (Admin Only) -->
+    <div id="add-opportunity-modal" class="modal hidden">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h2>Adicionar Nova Oportunidade</h2>
+            <form id="opportunity-form" class="opportunity-form">
+                <div class="form-group">
+                    <label for="opp-title">Título da Oportunidade</label>
+                    <input type="text" id="opp-title" name="title" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="opp-company">Empresa/Organização</label>
+                    <input type="text" id="opp-company" name="company" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="opp-description">Descrição</label>
+                    <textarea id="opp-description" name="description" rows="4" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="opp-type">Tipo</label>
+                    <select id="opp-type" name="type" required>
+                        <option value="">Selecione o tipo</option>
+                        <option value="emprego">Emprego</option>
+                        <option value="estagio">Estágio</option>
+                        <option value="bolsa">Bolsa de Estudos</option>
+                        <option value="curso">Curso/Formação</option>
+                        <option value="evento">Evento</option>
+                        <option value="mentoria">Mentoria</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="opp-level">Nível</label>
+                    <select id="opp-level" name="level" required>
+                        <option value="">Selecione o nível</option>
+                        <option value="iniciante">Iniciante</option>
+                        <option value="intermediario">Intermediário</option>
+                        <option value="avancado">Avançado</option>
+                        <option value="senior">Sênior</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="opp-location">Localização</label>
+                    <input type="text" id="opp-location" name="location" placeholder="Maputo, Moçambique ou Remoto">
+                </div>
+                
+                <div class="form-group">
+                    <label for="opp-link">Link de Aplicação</label>
+                    <input type="url" id="opp-link" name="link" placeholder="https://...">
+                </div>
+                
+                <div class="form-group">
+                    <label for="opp-deadline">Data Limite</label>
+                    <input type="date" id="opp-deadline" name="deadline">
+                </div>
+                
+                <div class="form-group">
+                    <label for="opp-skills">Habilidades Requeridas (separadas por vírgula)</label>
+                    <input type="text" id="opp-skills" name="skills" placeholder="JavaScript, Python, React...">
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn btn-outline" onclick="NetworkApp.closeModal(document.getElementById('add-opportunity-modal'))">
+                        Cancelar
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-plus"></i>
+                        Adicionar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Profile Modal -->
+    <div id="profile-modal" class="modal hidden">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h2>Perfil do Usuário</h2>
+            <form id="profile-form" class="profile-form">
+                <div class="form-group">
+                    <label for="profile-name">Nome Completo</label>
+                    <input type="text" id="profile-name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="profile-username">Nome de Usuário</label>
+                    <input type="text" id="profile-username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="profile-bio">Biografia</label>
+                    <textarea id="profile-bio" name="bio" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="profile-skills">Habilidades (separadas por vírgula)</label>
+                    <input type="text" id="profile-skills" name="skills" placeholder="JavaScript, Python, Design...">
+                </div>
+                <div class="form-group">
+                    <label for="profile-location">Localização</label>
+                    <input type="text" id="profile-location" name="location" placeholder="Maputo, Moçambique">
+                </div>
+                <button type="submit" class="btn btn-primary">Salvar Perfil</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay hidden">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Carregando...</p>
+        </div>
+    </div>
+
+    <!-- Firebase Scripts -->
+    <script type="module" src="firebase.js"></script>
+    <script type="module" src="script.js"></script>
+    <script type="module" src="opportunities.js"></script>
+
+    <style>
+        /* Opportunities-specific styles */
+        .opportunities-container {
+            min-height: 400px;
+        }
+        
+        .opportunities-list {
+            display: grid;
+            gap: var(--spacing-lg);
+        }
+        
+        .opportunity-card {
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            transition: all var(--transition-fast);
+        }
+        
+        .opportunity-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+        }
+        
+        .opportunity-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .opportunity-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .opportunity-company {
+            color: var(--primary);
+            font-weight: 500;
+        }
+        
+        .opportunity-badges {
+            display: flex;
+            gap: var(--spacing-xs);
+            flex-wrap: wrap;
+        }
+        
+        .opportunity-badge {
+            padding: 4px var(--spacing-sm);
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .badge-type {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .badge-level {
+            background: var(--success);
+            color: white;
+        }
+        
+        .opportunity-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .opportunity-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+        
+        .opportunity-skills {
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-xs);
+            margin-top: var(--spacing-xs);
+        }
+        
+        .skill-tag {
+            background: var(--surface);
+            color: var(--text-secondary);
+            padding: 2px var(--spacing-xs);
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+        }
+        
+        .opportunity-actions {
+            display: flex;
+            gap: var(--spacing-sm);
+            align-items: center;
+        }
+        
+        .deadline-warning {
+            color: var(--warning);
+            font-weight: 500;
+        }
+        
+        .deadline-urgent {
+            color: var(--error);
+            font-weight: 600;
+        }
+        
+        /* Career Paths Section */
+        .career-paths-section {
+            padding: var(--spacing-2xl) var(--spacing-lg);
+            background: var(--surface);
+        }
+        
+        .career-paths-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-xl);
+        }
+        
+        .career-path {
+            background: var(--background);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-lg);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-normal);
+        }
+        
+        .career-path:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .career-icon {
+            background: var(--primary);
+            color: white;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--spacing-lg);
+        }
+        
+        .career-icon i {
+            font-size: 2rem;
+        }
+        
+        .career-path h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+            color: var(--text-primary);
+        }
+        
+        .career-path p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .career-skills {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-xs);
+            justify-content: center;
+        }
+        
+        .career-skills li {
+            background: var(--primary);
+            color: white;
+            padding: 4px var(--spacing-sm);
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        /* Skills Timeline */
+        .skills-section {
+            padding: var(--spacing-2xl) var(--spacing-lg);
+        }
+        
+        .skills-timeline {
+            max-width: 800px;
+            margin: var(--spacing-xl) auto 0;
+        }
+        
+        .timeline-item {
+            display: flex;
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-2xl);
+        }
+        
+        .timeline-marker {
+            flex-shrink: 0;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        .timeline-content {
+            flex: 1;
+            padding-top: var(--spacing-xs);
+        }
+        
+        .timeline-content h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-primary);
+        }
+        
+        .timeline-content p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .timeline-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .timeline-content li {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            margin-bottom: var(--spacing-xs);
+            color: var(--text-secondary);
+        }
+        
+        .timeline-content li:before {
+            content: "•";
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .career-paths-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .opportunity-header {
+                flex-direction: column;
+                gap: var(--spacing-sm);
+            }
+            
+            .opportunity-badges {
+                align-self: flex-start;
+            }
+            
+            .timeline-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .timeline-marker {
+                align-self: center;
+            }
+        }
+    </style>
+
+    <script type="module">
+        import firebase from './firebase.js';
+        
+        // Initialize opportunities page
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadOpportunities();
+            setupOpportunitiesEvents();
+            
+            // Check if user is admin
+            firebase.onAuthStateChange(async (user) => {
+                if (user) {
+                    const isUserAdmin = await firebase.isAdmin(user.uid);
+                    if (isUserAdmin) {
+                        document.getElementById('admin-actions').style.display = 'block';
+                    }
+                }
+            });
+        });
+        
+        async function loadOpportunities() {
+            const loading = document.getElementById('opportunities-loading');
+            const list = document.getElementById('opportunities-list');
+            const empty = document.getElementById('opportunities-empty');
+            
+            try {
+                const opportunities = await firebase.getOpportunities();
+                
+                loading.classList.add('hidden');
+                
+                if (opportunities.length === 0) {
+                    empty.classList.remove('hidden');
+                } else {
+                    list.classList.remove('hidden');
+                    renderOpportunities(opportunities);
+                }
+            } catch (error) {
+                console.error('Error loading opportunities:', error);
+                loading.innerHTML = '<p>Erro ao carregar oportunidades.</p>';
+            }
+        }
+        
+        function renderOpportunities(opportunities) {
+            const list = document.getElementById('opportunities-list');
+            
+            list.innerHTML = opportunities.map(opp => `
+                <div class="opportunity-card" data-id="${opp.id}">
+                    <div class="opportunity-header">
+                        <div>
+                            <h3 class="opportunity-title">${opp.title}</h3>
+                            <p class="opportunity-company">${opp.company}</p>
+                        </div>
+                        <div class="opportunity-badges">
+                            <span class="opportunity-badge badge-type">${getTypeLabel(opp.type)}</span>
+                            <span class="opportunity-badge badge-level">${getLevelLabel(opp.level)}</span>
+                        </div>
+                    </div>
+                    
+                    <p class="opportunity-description">${opp.description}</p>
+                    
+                    <div class="opportunity-meta">
+                        ${opp.location ? `<div class="meta-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>${opp.location}</span>
+                        </div>` : ''}
+                        ${opp.deadline ? `<div class="meta-item ${getDeadlineClass(opp.deadline)}">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Prazo: ${formatDate(opp.deadline)}</span>
+                        </div>` : ''}
+                    </div>
+                    
+                    ${opp.skills && opp.skills.length > 0 ? `
+                        <div class="opportunity-skills">
+                            <strong>Habilidades:</strong>
+                            <div class="skills-list">
+                                ${opp.skills.map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
+                            </div>
+                        </div>
+                    ` : ''}
+                    
+                    <div class="opportunity-actions">
+                        ${opp.link ? `<a href="${opp.link}" target="_blank" class="btn btn-primary">
+                            <i class="fas fa-external-link-alt"></i>
+                            Candidatar-se
+                        </a>` : ''}
+                        <button class="btn btn-outline" onclick="shareOpportunity('${opp.id}')">
+                            <i class="fas fa-share"></i>
+                            Compartilhar
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function setupOpportunitiesEvents() {
+            const addBtn = document.getElementById('add-opportunity-btn');
+            const modal = document.getElementById('add-opportunity-modal');
+            const form = document.getElementById('opportunity-form');
+            
+            if (addBtn) {
+                addBtn.addEventListener('click', () => {
+                    NetworkApp.openModal(modal);
+                });
+            }
+            
+            if (form) {
+                form.addEventListener('submit', handleAddOpportunity);
+            }
+        }
+        
+        async function handleAddOpportunity(e) {
+            e.preventDefault();
+            
+            try {
+                NetworkApp.showLoading();
+                
+                const formData = new FormData(e.target);
+                const opportunityData = {
+                    title: formData.get('title'),
+                    company: formData.get('company'),
+                    description: formData.get('description'),
+                    type: formData.get('type'),
+                    level: formData.get('level'),
+                    location: formData.get('location'),
+                    link: formData.get('link'),
+                    deadline: formData.get('deadline'),
+                    skills: formData.get('skills').split(',').map(s => s.trim()).filter(s => s)
+                };
+                
+                await firebase.addOpportunity(opportunityData);
+                
+                NetworkApp.closeModal(document.getElementById('add-opportunity-modal'));
+                NetworkApp.showNotification('Oportunidade adicionada com sucesso!', 'success');
+                
+                // Reload opportunities
+                document.getElementById('opportunities-list').classList.add('hidden');
+                document.getElementById('opportunities-loading').classList.remove('hidden');
+                await loadOpportunities();
+                
+                e.target.reset();
+                
+            } catch (error) {
+                console.error('Error adding opportunity:', error);
+                NetworkApp.showNotification('Erro ao adicionar oportunidade.', 'error');
+            } finally {
+                NetworkApp.hideLoading();
+            }
+        }
+        
+        function getTypeLabel(type) {
+            const labels = {
+                emprego: 'Emprego',
+                estagio: 'Estágio',
+                bolsa: 'Bolsa',
+                curso: 'Curso',
+                evento: 'Evento',
+                mentoria: 'Mentoria'
+            };
+            return labels[type] || type;
+        }
+        
+        function getLevelLabel(level) {
+            const labels = {
+                iniciante: 'Iniciante',
+                intermediario: 'Intermediário',
+                avancado: 'Avançado',
+                senior: 'Sênior'
+            };
+            return labels[level] || level;
+        }
+        
+        function getDeadlineClass(deadline) {
+            if (!deadline) return '';
+            
+            const deadlineDate = new Date(deadline);
+            const today = new Date();
+            const diffTime = deadlineDate.getTime() - today.getTime();
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            
+            if (diffDays <= 3) return 'deadline-urgent';
+            if (diffDays <= 7) return 'deadline-warning';
+            return '';
+        }
+        
+        function formatDate(dateString) {
+            if (!dateString) return '';
+            const date = new Date(dateString);
+            return date.toLocaleDateString('pt-BR');
+        }
+        
+        window.shareOpportunity = function(oppId) {
+            const url = `${window.location.origin}/opportunities.html#${oppId}`;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Oportunidade em STEM',
+                    text: 'Confira esta oportunidade incrível!',
+                    url: url
+                });
+            } else {
+                navigator.clipboard.writeText(url).then(() => {
+                    NetworkApp.showNotification('Link copiado para área de transferência!', 'success');
+                });
+            }
+        };
+    </script>
+</body>
+</html>

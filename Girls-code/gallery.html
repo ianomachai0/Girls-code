@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria - United Girls Society</title>
+    <meta name="description" content="Explore fotos e vídeos compartilhados pela nossa comunidade de mulheres na tecnologia.">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <i class="fas fa-code"></i>
+                <span>United Girls Society</span>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Início</a></li>
+                <li><a href="about.html" class="nav-link">Sobre</a></li>
+                <li><a href="opportunities.html" class="nav-link">Oportunidades</a></li>
+                <li><a href="testimonies.html" class="nav-link">Testemunhos</a></li>
+                <li><a href="gallery.html" class="nav-link active">Galeria</a></li>
+                <li><a href="gratitude.html" class="nav-link">Agradecimentos</a></li>
+                <li><a href="search.html" class="nav-link">Buscar</a></li>
+                <li><a href="contact.html" class="nav-link">Contato</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button id="login-btn" class="login-btn">
+                    <i class="fab fa-google"></i>
+                    Entrar
+                </button>
+                <div id="user-profile" class="user-profile hidden">
+                    <img id="user-avatar" class="user-avatar" alt="Avatar do usuário">
+                    <span id="user-name" class="user-name"></span>
+                    <button id="logout-btn" class="logout-btn">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <button class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main class="main">
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="page-header-content">
+                <h1 class="page-title">Galeria da Comunidade</h1>
+                <p class="page-description">
+                    Compartilhe seus momentos, projetos e conquistas com nossa comunidade
+                </p>
+                <div class="gallery-actions">
+                    <button id="publish-btn" class="btn btn-primary">
+                        <i class="fas fa-plus"></i>
+                        Publicar Conteúdo
+                    </button>
+                    <button id="faq-btn" class="btn btn-outline">
+                        <i class="fas fa-question-circle"></i>
+                        Como Publicar?
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Content -->
+        <section class="content-section">
+            <div class="gallery-container">
+                <div id="gallery-grid" class="gallery-grid">
+                    <!-- Gallery items will be loaded dynamically -->
+                </div>
+                
+                <!-- Empty state -->
+                <div id="gallery-empty" class="empty-state hidden">
+                    <div class="empty-icon">
+                        <i class="fas fa-images"></i>
+                    </div>
+                    <h3>Nenhum conteúdo ainda</h3>
+                    <p>Seja a primeira a compartilhar algo incrível com a comunidade!</p>
+                    <button class="btn btn-primary" onclick="document.getElementById('publish-btn').click()">
+                        <i class="fas fa-plus"></i>
+                        Publicar Agora
+                    </button>
+                </div>
+                
+                <!-- Loading state -->
+                <div id="gallery-loading" class="loading-state">
+                    <div class="loading-spinner">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>Carregando galeria...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>United Girls Society</h3>
+                <p>Conectando, inspirando e promovendo a colaboração entre mulheres na área de STEM/TI.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Links Rápidos</h4>
+                <ul class="footer-links">
+                    <li><a href="about.html">Sobre</a></li>
+                    <li><a href="opportunities.html">Oportunidades</a></li>
+                    <li><a href="testimonies.html">Testemunhos</a></li>
+                    <li><a href="gallery.html">Galeria</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Agradecimentos</h4>
+                <p>Este projeto é dedicado à Escola Secundária de Inhamissa, em agradecimento à Vodacom, Machel Fidus Foundation e Digi Project.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 DAFEJY Technology. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Publish Modal -->
+    <div id="publish-modal" class="modal hidden">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h2>Publicar Conteúdo</h2>
+            <form id="publish-form" class="publish-form">
+                <div class="form-group">
+                    <label for="content-title">Título</label>
+                    <input type="text" id="content-title" name="title" required placeholder="Descreva sua publicação...">
+                </div>
+                
+                <div class="form-group">
+                    <label for="content-description">Descrição</label>
+                    <textarea id="content-description" name="description" rows="3" placeholder="Conte mais sobre sua publicação..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="content-file">Arquivo (Imagem ou Vídeo)</label>
+                    <div class="file-upload">
+                        <input type="file" id="content-file" name="file" accept="image/*,video/*" required>
+                        <div class="file-upload-area">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Clique para selecionar ou arraste um arquivo aqui</p>
+                            <small>Formatos aceitos: JPG, PNG, GIF, MP4, WebM (máx. 50MB)</small>
+                        </div>
+                        <div id="file-preview" class="file-preview hidden">
+                            <img id="preview-image" class="preview-image hidden">
+                            <video id="preview-video" class="preview-video hidden" controls></video>
+                            <div class="file-info">
+                                <span id="file-name"></span>
+                                <button type="button" id="remove-file" class="btn-remove">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="content-category">Categoria</label>
+                    <select id="content-category" name="category" required>
+                        <option value="">Selecione uma categoria</option>
+                        <option value="projetos">Projetos</option>
+                        <option value="eventos">Eventos</option>
+                        <option value="conquistas">Conquistas</option>
+                        <option value="aprendizado">Aprendizado</option>
+                        <option value="networking">Networking</option>
+                        <option value="inspiracao">Inspiração</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="content-tags">Tags (separadas por vírgula)</label>
+                    <input type="text" id="content-tags" name="tags" placeholder="programacao, python, webapp, design...">
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn btn-outline" onclick="NetworkApp.closeModal(document.getElementById('publish-modal'))">
+                        Cancelar
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-share"></i>
+                        Publicar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- FAQ Modal -->
+    <div id="faq-modal" class="modal hidden">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h2>Como Publicar na Galeria?</h2>
+            <div class="faq-content">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <i class="fas fa-question-circle"></i>
+                        <span>Como faço para publicar meu conteúdo?</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Para publicar, você precisa estar logada com sua conta Google. Clique em "Publicar Conteúdo", preencha as informações e selecione sua imagem ou vídeo.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <i class="fas fa-question-circle"></i>
+                        <span>Que tipos de arquivo posso enviar?</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Aceitamos imagens (JPG, PNG, GIF) e vídeos (MP4, WebM) com tamanho máximo de 50MB cada.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <i class="fas fa-question-circle"></i>
+                        <span>Posso editar ou deletar minhas publicações?</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim! Suas próprias publicações terão opções para editar ou remover. Outras usuárias poderão apenas visualizar.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <i class="fas fa-question-circle"></i>
+                        <span>Como posso ver o perfil de outras usuárias?</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Clique no nome ou foto de perfil de qualquer usuária para ver mais informações sobre ela e suas publicações.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="faq-actions">
+                <button class="btn btn-primary" onclick="NetworkApp.closeModal(document.getElementById('faq-modal'))">
+                    <i class="fas fa-check"></i>
+                    Entendi
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Profile Modal (viewing other users) -->
+    <div id="user-modal" class="modal hidden">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div id="user-modal-content">
+                <!-- Will be populated dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Modal (own profile) -->
+    <div id="profile-modal" class="modal hidden">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h2>Perfil do Usuário</h2>
+            <form id="profile-form" class="profile-form">
+                <!-- Profile Photo Section -->
+                <div class="form-group profile-photo-section">
+                    <label>Foto de Perfil</label>
+                    <div class="profile-photo-container">
+                        <div class="current-photo">
+                            <img id="current-profile-photo" class="profile-photo-preview" src="" alt="Foto de perfil atual">
+                            <div id="no-photo-placeholder" class="no-photo-placeholder">
+                                <i class="fas fa-user"></i>
+                                <span>Sem foto</span>
+                            </div>
+                        </div>
+                        <div class="photo-upload-controls">
+                            <input type="file" id="profile-photo-input" accept="image/*" hidden>
+                            <button type="button" id="upload-photo-btn" class="btn btn-outline btn-sm">
+                                <i class="fas fa-camera"></i>
+                                Alterar Foto
+                            </button>
+                            <button type="button" id="remove-photo-btn" class="btn btn-outline btn-sm btn-danger hidden">
+                                <i class="fas fa-trash"></i>
+                                Remover
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="profile-name">Nome Completo</label>
+                    <input type="text" id="profile-name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="profile-username">Nome de Usuário</label>
+                    <input type="text" id="profile-username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="profile-bio">Biografia</label>
+                    <textarea id="profile-bio" name="bio" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="profile-skills">Habilidades (separadas por vírgula)</label>
+                    <input type="text" id="profile-skills" name="skills" placeholder="JavaScript, Python, Design...">
+                </div>
+                <div class="form-group">
+                    <label for="profile-location">Localização</label>
+                    <input type="text" id="profile-location" name="location" placeholder="Maputo, Moçambique">
+                </div>
+                <button type="submit" class="btn btn-primary">Salvar Perfil</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay hidden">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Carregando...</p>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="./search.html" class="bottom-nav-item">
+            <i class="fas fa-search"></i>
+            <span>Pesquisar</span>
+        </a>
+        <a href="./learn.html" class="bottom-nav-item">
+            <i class="fas fa-graduation-cap"></i>
+            <span>Aprenda</span>
+        </a>
+        <a href="./notifications.html" class="bottom-nav-item">
+            <i class="fas fa-bell"></i>
+            <span>Notificações</span>
+        </a>
+        <a href="./gallery.html" class="bottom-nav-item active nav-center">
+            <i class="fas fa-home"></i>
+            <span>Galeria</span>
+        </a>
+        <a href="./opportunities.html" class="bottom-nav-item">
+            <i class="fas fa-briefcase"></i>
+            <span>Oportunidades</span>
+        </a>
+        <a href="./gratitude.html" class="bottom-nav-item">
+            <i class="fas fa-heart"></i>
+            <span>Gratidão</span>
+        </a>
+        <a href="./testimonies.html" class="bottom-nav-item">
+            <i class="fas fa-quote-left"></i>
+            <span>Testemunhas</span>
+        </a>
+    </nav>
+
+    <!-- Firebase Scripts -->
+    <script type="module" src="firebase.js"></script>
+    <script type="module" src="script.js"></script>
+    <script type="module" src="gallery.js"></script>
+    
+    <script type="module">
+        import firebase from './firebase.js';
+        
+        // Verificar autenticação antes de carregar a página
+        firebase.onAuthStateChange((user) => {
+            if (!user) {
+                // Redirecionar para login com parâmetro de retorno
+                const currentPage = window.location.href;
+                window.location.href = `login.html?redirect=${encodeURIComponent(currentPage)}`;
+            }
+        });
+    </script>
+
+    <style>
+        /* Gallery-specific styles */
+        .gallery-actions {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .gallery-container {
+            min-height: 400px;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-2xl);
+        }
+        
+        .gallery-item {
+            background: var(--background);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-normal);
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .gallery-media {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            background: var(--surface);
+            overflow: hidden;
+        }
+        
+        .gallery-media img,
+        .gallery-media video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .media-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity var(--transition-fast);
+        }
+        
+        .gallery-item:hover .media-overlay {
+            opacity: 1;
+        }
+        
+        .media-overlay .btn {
+            margin: 0 var(--spacing-xs);
+        }
+        
+        .gallery-info {
+            padding: var(--spacing-md);
+        }
+        
+        .gallery-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-primary);
+        }
+        
+        .gallery-description {
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-md);
+            line-height: 1.5;
+        }
+        
+        .gallery-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        .gallery-author {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            cursor: pointer;
+            transition: color var(--transition-fast);
+        }
+        
+        .gallery-author:hover {
+            color: var(--primary);
+        }
+        
+        .gallery-author img {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+        }
+        
+        .gallery-tags {
+            margin-top: var(--spacing-sm);
+        }
+        
+        .tag {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 2px var(--spacing-xs);
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            margin-right: var(--spacing-xs);
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .category-badge {
+            position: absolute;
+            top: var(--spacing-sm);
+            right: var(--spacing-sm);
+            background: rgba(230, 0, 0, 0.9);
+            color: white;
+            padding: 4px var(--spacing-sm);
+            border-radius: var(--radius-md);
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .empty-state,
+        .loading-state {
+            text-align: center;
+            padding: var(--spacing-2xl);
+            color: var(--text-secondary);
+        }
+        
+        .empty-icon {
+            font-size: 4rem;
+            margin-bottom: var(--spacing-lg);
+            opacity: 0.5;
+        }
+        
+        .empty-state h3 {
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-md);
+            color: var(--text-primary);
+        }
+        
+        .empty-state p {
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        /* File upload styles */
+        .file-upload {
+            position: relative;
+        }
+        
+        .file-upload input[type="file"] {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        
+        .file-upload-area {
+            border: 2px dashed var(--border);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-xl);
+            text-align: center;
+            transition: all var(--transition-fast);
+        }
+        
+        .file-upload-area:hover {
+            border-color: var(--primary);
+            background: rgba(230, 0, 0, 0.05);
+        }
+        
+        .file-upload-area i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .file-upload-area p {
+            font-weight: 500;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .file-upload-area small {
+            color: var(--text-muted);
+        }
+        
+        .file-preview {
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+        }
+        
+        .preview-image,
+        .preview-video {
+            max-width: 100%;
+            max-height: 200px;
+            border-radius: var(--radius-sm);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .file-info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .btn-remove {
+            background: var(--error);
+            color: white;
+            padding: var(--spacing-xs);
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .btn-remove:hover {
+            background: #CC0000;
+        }
+        
+        .form-actions {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: flex-end;
+            margin-top: var(--spacing-lg);
+        }
+        
+        /* FAQ styles */
+        .faq-content {
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .faq-item {
+            margin-bottom: var(--spacing-lg);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: var(--spacing-md);
+        }
+        
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        
+        .faq-question {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .faq-question i {
+            color: var(--primary);
+        }
+        
+        .faq-answer p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        .faq-actions {
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .gallery-actions .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .gallery-media {
+                height: 200px;
+            }
+        }
+    </style>
+</body>
+</html>
