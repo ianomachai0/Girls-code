@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agradecimentos - Network Like a Coders</title>
+    <meta name="description" content="Expresse sua gratidão e veja mensagens de agradecimento da nossa comunidade de mulheres na tecnologia.">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <i class="fas fa-code"></i>
+                <span>Network Like a Coders</span>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Início</a></li>
+                <li><a href="about.html" class="nav-link">Sobre</a></li>
+                <li><a href="opportunities.html" class="nav-link">Oportunidades</a></li>
+                <li><a href="testimonies.html" class="nav-link">Testemunhos</a></li>
+                <li><a href="gallery.html" class="nav-link">Galeria</a></li>
+                <li><a href="gratitude.html" class="nav-link active">Agradecimentos</a></li>
+                <li><a href="search.html" class="nav-link">Buscar</a></li>
+                <li><a href="contact.html" class="nav-link">Contato</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button id="login-btn" class="login-btn">
+                    <i class="fab fa-google"></i>
+                    Entrar
+                </button>
+                <div id="user-profile" class="user-profile hidden">
+                    <img id="user-avatar" class="user-avatar" alt="Avatar do usuário">
+                    <span id="user-name" class="user-name"></span>
+                    <button id="logout-btn" class="logout-btn">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <button class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main class="main">
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="page-header-content">
+                <h1 class="page-title">Mural de Agradecimentos</h1>
+                <p class="page-description">
+                    Um espaço para expressar gratidão pelos programas, mentores e oportunidades que transformaram nossas vidas
+                </p>
+                <div class="gratitude-actions">
+                    <button id="add-gratitude-btn" class="btn btn-primary" style="display: none;">
+                        <i class="fas fa-heart"></i>
+                        Expressar Gratidão
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dedication Section -->
+        <section class="dedication-section">
+            <div class="content-section">
+                <div class="dedication-card">
+                    <div class="dedication-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h2>Dedicação Especial</h2>
+                    <p class="dedication-text">
+                        Este projeto é dedicado à <strong>Escola Secundária de Inhamissa</strong>, 
+                        em agradecimento à <strong>Vodacom</strong>, <strong>Machel Fidus Foundation</strong> 
+                        e <strong>Digi Project</strong> por todo o apoio e oportunidades oferecidas 
+                        para o desenvolvimento tecnológico e educacional em Moçambique.
+                    </p>
+                    <div class="dedication-partners">
+                        <div class="partner-mini">
+                            <img src="assets/logo-vodacom.svg" alt="Vodacom">
+                            <span>Vodacom</span>
+                        </div>
+                        <div class="partner-mini">
+                            <img src="assets/logo-machel.svg" alt="Machel Fidus Foundation">
+                            <span>Machel Fidus</span>
+                        </div>
+                        <div class="partner-mini">
+                            <img src="assets/logo-digi.svg" alt="Digi Project">
+                            <span>Digi Project</span>
+                        </div>
+                        <div class="partner-mini">
+                            <img src="assets/logo-dafejy.svg" alt="DAFEJY Technology">
+                            <span>DAFEJY Tech</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gratitude Messages -->
+        <section class="gratitude-messages-section">
+            <div class="content-section">
+                <h2 class="section-title text-center">Mensagens da Comunidade</h2>
+                
+                <div id="gratitude-container" class="gratitude-container">
+                    <!-- Loading state -->
+                    <div id="gratitude-loading" class="loading-state">
+                        <div class="loading-spinner">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <p>Carregando mensagens...</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Messages will be loaded here -->
+                    <div id="gratitude-grid" class="gratitude-grid hidden">
+                        <!-- Dynamic content -->
+                    </div>
+                    
+                    <!-- Empty state -->
+                    <div id="gratitude-empty" class="empty-state hidden">
+                        <div class="empty-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Ainda não há mensagens de agradecimento</h3>
+                        <p>Seja a primeira a expressar sua gratidão!</p>
+                        <button class="btn btn-primary" onclick="document.getElementById('add-gratitude-btn').click()">
+                            <i class="fas fa-heart"></i>
+                            Agradecer Agora
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact Recognition -->
+        <section class="impact-recognition">
+            <div class="content-section">
+                <h2 class="section-title text-center">Reconhecendo o Impacto</h2>
+                <div class="recognition-grid">
+                    <div class="recognition-item">
+                        <div class="recognition-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Comunidade</h3>
+                        <p>Criando uma rede forte de mulheres apoiando umas às outras na jornada tech.</p>
+                    </div>
+                    <div class="recognition-item">
+                        <div class="recognition-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3>Inovação</h3>
+                        <p>Fomentando ideias inovadoras e soluções criativas para desafios reais.</p>
+                    </div>
+                    <div class="recognition-item">
+                        <div class="recognition-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3>Crescimento</h3>
+                        <p>Impulsionando carreiras e abrindo portas para novas oportunidades.</p>
+                    </div>
+                    <div class="recognition-item">
+                        <div class="recognition-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Transformação</h3>
+                        <p>Mudando vidas e construindo um futuro mais inclusivo na tecnologia.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="./search.html" class="bottom-nav-item">
+            <i class="fas fa-search"></i>
+            <span>Pesquisar</span>
+        </a>
+        <a href="./learn.html" class="bottom-nav-item">
+            <i class="fas fa-graduation-cap"></i>
+            <span>Aprenda</span>
+        </a>
+        <a href="./notifications.html" class="bottom-nav-item">
+            <i class="fas fa-bell"></i>
+            <span>Notificações</span>
+        </a>
+        <a href="./gallery.html" class="bottom-nav-item nav-center">
+            <i class="fas fa-home"></i>
+            <span>Galeria</span>
+        </a>
+        <a href="./opportunities.html" class="bottom-nav-item">
+            <i class="fas fa-briefcase"></i>
+            <span>Oportunidades</span>
+        </a>
+        <a href="./gratitude.html" class="bottom-nav-item active">
+            <i class="fas fa-heart"></i>
+            <span>Gratidão</span>
+        </a>
+        <a href="./testimonies.html" class="bottom-nav-item">
+            <i class="fas fa-quote-left"></i>
+            <span>Testemunhas</span>
+        </a>
+    </nav>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Network Like a Coders</h3>
+                <p>Conectando, inspirando e promovendo a colaboração entre mulheres na área de STEM/TI.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Links Rápidos</h4>
+                <ul class="footer-links">
+                    <li><a href="about.html">Sobre</a></li>
+                    <li><a href="opportunities.html">Oportunidades</a></li>
+                    <li><a href="testimonies.html">Testemunhos</a></li>
+                    <li><a href="gallery.html">Galeria</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Agradecimentos</h4>
+                <p>Este projeto é dedicado à Escola Secundária de Inhamissa, em agradecimento à Vodacom, Machel Fidus Foundation e Digi Project.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 DAFEJY Technology. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Add Gratitude Modal -->
+    <div id="add-gratitude-modal" class="modal hidden">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h2>Expressar Gratidão</h2>
+            <form id="gratitude-form" class="gratitude-form">
+                <div class="form-group">
+                    <label for="gratitude-title">Título da mensagem</label>
+                    <input type="text" id="gratitude-title" name="title" required placeholder="Ex: Obrigada pelo programa Code Like a Girl">
+                </div>
+                
+                <div class="form-group">
+                    <label for="gratitude-message">Sua mensagem de agradecimento</label>
+                    <textarea id="gratitude-message" name="message" rows="5" required placeholder="Expresse sua gratidão pelos programas, mentores, oportunidades ou apoio recebido..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="gratitude-to">Para quem é o agradecimento?</label>
+                    <select id="gratitude-to" name="to" required>
+                        <option value="">Selecione...</option>
+                        <option value="vodacom">Vodacom</option>
+                        <option value="machel-fidus">Machel Fidus Foundation</option>
+                        <option value="digi-project">Digi Project</option>
+                        <option value="code-like-a-girl">Programa Code Like a Girl</option>
+                        <option value="escola-inhamissa">Escola Secundária de Inhamissa</option>
+                        <option value="mentores">Mentores e Mentoras</option>
+                        <option value="comunidade">Comunidade Network Like a Coders</option>
+                        <option value="outros">Outros</option>
+                    </select>
+                </div>
+                
+                <div class="form-group" id="other-recipient-group" style="display: none;">
+                    <label for="gratitude-other">Especifique para quem:</label>
+                    <input type="text" id="gratitude-other" name="other" placeholder="Nome da pessoa, organização ou programa">
+                </div>
+                
+                <div class="form-group">
+                    <label for="gratitude-category">Categoria do impacto</label>
+                    <select id="gratitude-category" name="category">
+                        <option value="">Selecione (opcional)</option>
+                        <option value="educacao">Educação e Formação</option>
+                        <option value="emprego">Oportunidade de Emprego</option>
+                        <option value="mentoria">Mentoria e Apoio</option>
+                        <option value="networking">Networking</option>
+                        <option value="inspiracao">Inspiração</option>
+                        <option value="desenvolvimento">Desenvolvimento Pessoal</option>
+                        <option value="recursos">Recursos e Ferramentas</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="gratitude-photo">Foto relacionada (opcional)</label>
+                    <div class="file-upload">
+                        <input type="file" id="gratitude-photo" name="photo" accept="image/*">
+                        <div class="file-upload-area">
+                            <i class="fas fa-camera"></i>
+                            <p>Adicione uma foto que represente sua gratidão</p>
+                            <small>Formatos aceitos: JPG, PNG, GIF (máx. 5MB)</small>
+                        </div>
+                        <div id="photo-preview" class="file-preview hidden">
+                            <img id="preview-image" class="preview-image">
+                            <div class="file-info">
+                                <span id="photo-name"></span>
+                                <button type="button" id="remove-photo" class="btn-remove">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn btn-outline" onclick="NetworkApp.closeModal(document.getElementById('add-gratitude-modal'))">
+                        Cancelar
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-heart"></i>
+                        Enviar Agradecimento
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Profile Modal -->
+    <div id="profile-modal" class="modal hidden">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h2>Perfil do Usuário</h2>
+            <form id="profile-form" class="profile-form">
+                <!-- Profile Photo Section -->
+                <div class="form-group profile-photo-section">
+                    <label>Foto de Perfil</label>
+                    <div class="profile-photo-container">
+                        <div class="current-photo">
+                            <img id="current-profile-photo" class="profile-photo-preview" src="" alt="Foto de perfil atual">
+                            <div id="no-photo-placeholder" class="no-photo-placeholder">
+                                <i class="fas fa-user"></i>
+                                <span>Sem foto</span>
+                            </div>
+                        </div>
+                        <div class="photo-upload-controls">
+                            <input type="file" id="profile-photo-input" accept="image/*" hidden>
+                            <button type="button" id="upload-photo-btn" class="btn btn-outline btn-sm">
+                                <i class="fas fa-camera"></i>
+                                Alterar Foto
+                            </button>
+                            <button type="button" id="remove-photo-btn" class="btn btn-outline btn-sm btn-danger hidden">
+                                <i class="fas fa-trash"></i>
+                                Remover
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="profile-name">Nome Completo</label>
+                    <input type="text" id="profile-name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="profile-username">Nome de Usuário</label>
+                    <input type="text" id="profile-username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="profile-bio">Biografia</label>
+                    <textarea id="profile-bio" name="bio" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="profile-skills">Habilidades (separadas por vírgula)</label>
+                    <input type="text" id="profile-skills" name="skills" placeholder="JavaScript, Python, Design...">
+                </div>
+                <div class="form-group">
+                    <label for="profile-location">Localização</label>
+                    <input type="text" id="profile-location" name="location" placeholder="Maputo, Moçambique">
+                </div>
+                <button type="submit" class="btn btn-primary">Salvar Perfil</button>
+            </form>
+        </div>
+    </div>
+            <form id="profile-form" class="profile-form">
+                <div class="form-group">
+                    <label for="profile-name">Nome Completo</label>
+                    <input type="text" id="profile-name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="profile-username">Nome de Usuário</label>
+                    <input type="text" id="profile-username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="profile-bio">Biografia</label>
+                    <textarea id="profile-bio" name="bio" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="profile-skills">Habilidades (separadas por vírgula)</label>
+                    <input type="text" id="profile-skills" name="skills" placeholder="JavaScript, Python, Design...">
+                </div>
+                <div class="form-group">
+                    <label for="profile-location">Localização</label>
+                    <input type="text" id="profile-location" name="location" placeholder="Maputo, Moçambique">
+                </div>
+                <button type="submit" class="btn btn-primary">Salvar Perfil</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay hidden">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Carregando...</p>
+        </div>
+    </div>
+
+    <!-- Firebase Scripts -->
+    <script type="module" src="firebase.js"></script>
+    <script type="module" src="script.js"></script>
+
+    <style>
+        /* Gratitude-specific styles */
+        .dedication-section {
+            padding: var(--spacing-2xl) var(--spacing-lg);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
+            color: white;
+        }
+        
+        .dedication-card {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: var(--spacing-2xl);
+            border-radius: var(--radius-lg);
+            backdrop-filter: blur(10px);
+        }
+        
+        .dedication-icon {
+            background: rgba(255, 255, 255, 0.2);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--spacing-lg);
+        }
+        
+        .dedication-icon i {
+            font-size: 2.5rem;
+        }
+        
+        .dedication-card h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .dedication-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: var(--spacing-2xl);
+        }
+        
+        .dedication-partners {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-xl);
+            flex-wrap: wrap;
+        }
+        
+        .partner-mini {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+        
+        .partner-mini img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+        }
+        
+        .partner-mini span {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .gratitude-messages-section {
+            padding: var(--spacing-2xl) var(--spacing-lg);
+        }
+        
+        .gratitude-container {
+            min-height: 400px;
+        }
+        
+        .gratitude-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-xl);
+        }
+        
+        .gratitude-card {
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            transition: all var(--transition-normal);
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .gratitude-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .gratitude-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--primary);
+        }
+        
+        .gratitude-header {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .gratitude-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .gratitude-avatar-placeholder {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .gratitude-user h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 2px;
+            color: var(--text-primary);
+        }
+        
+        .gratitude-to {
+            color: var(--primary);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .gratitude-body {
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .gratitude-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-primary);
+        }
+        
+        .gratitude-message {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .gratitude-photo {
+            width: 100%;
+            border-radius: var(--radius-md);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .gratitude-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border);
+            padding-top: var(--spacing-md);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        .gratitude-category {
+            background: var(--surface);
+            color: var(--text-secondary);
+            padding: 2px var(--spacing-xs);
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+        }
+        
+        .impact-recognition {
+            padding: var(--spacing-2xl) var(--spacing-lg);
+            background: var(--surface);
+        }
+        
+        .recognition-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-xl);
+        }
+        
+        .recognition-item {
+            text-align: center;
+            padding: var(--spacing-xl);
+            background: var(--background);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-normal);
+        }
+        
+        .recognition-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .recognition-icon {
+            background: var(--primary);
+            color: white;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--spacing-lg);
+        }
+        
+        .recognition-icon i {
+            font-size: 1.8rem;
+        }
+        
+        .recognition-item h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+            color: var(--text-primary);
+        }
+        
+        .recognition-item p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        .gratitude-actions {
+            display: flex;
+            justify-content: center;
+            margin-top: var(--spacing-lg);
+        }
+        
+        /* File upload specific for gratitude */
+        .file-upload-area {
+            border: 2px dashed var(--border);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-lg);
+            text-align: center;
+            transition: all var(--transition-fast);
+            cursor: pointer;
+        }
+        
+        .file-upload-area:hover {
+            border-color: var(--primary);
+            background: rgba(230, 0, 0, 0.05);
+        }
+        
+        .file-upload-area i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .file-upload-area p {
+            font-weight: 500;
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .file-upload-area small {
+            color: var(--text-muted);
+        }
+        
+        @media (max-width: 768px) {
+            .dedication-partners {
+                flex-direction: column;
+                gap: var(--spacing-lg);
+            }
+            
+            .gratitude-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .recognition-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .dedication-text {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+
+    <script type="module">
+        import firebase from './firebase.js';
+        
+        // Initialize gratitude page
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadGratitudeMessages();
+            setupGratitudeEvents();
+            
+            // Show add gratitude button only for logged-in users
+            firebase.onAuthStateChange((user) => {
+                const addBtn = document.getElementById('add-gratitude-btn');
+                if (user && addBtn) {
+                    addBtn.style.display = 'block';
+                }
+            });
+        });
+        
+        async function loadGratitudeMessages() {
+            const loading = document.getElementById('gratitude-loading');
+            const grid = document.getElementById('gratitude-grid');
+            const empty = document.getElementById('gratitude-empty');
+            
+            try {
+                const messages = await firebase.getGratitudeMessages();
+                
+                loading.classList.add('hidden');
+                
+                if (messages.length === 0) {
+                    empty.classList.remove('hidden');
+                } else {
+                    grid.classList.remove('hidden');
+                    renderGratitudeMessages(messages);
+                }
+            } catch (error) {
+                console.error('Error loading gratitude messages:', error);
+                loading.innerHTML = '<p>Erro ao carregar mensagens.</p>';
+            }
+        }
+        
+        function renderGratitudeMessages(messages) {
+            const grid = document.getElementById('gratitude-grid');
+            
+            grid.innerHTML = messages.map(message => `
+                <div class="gratitude-card" data-id="${message.id}">
+                    <div class="gratitude-header">
+                        ${message.userPhoto ? 
+                            `<img src="${message.userPhoto}" alt="${message.userName}" class="gratitude-avatar">` :
+                            `<div class="gratitude-avatar-placeholder">${message.userName.charAt(0).toUpperCase()}</div>`
+                        }
+                        <div class="gratitude-user">
+                            <h4>${message.userName}</h4>
+                            <div class="gratitude-to">Para: ${getRecipientLabel(message.to, message.other)}</div>
+                        </div>
+                    </div>
+                    
+                    <div class="gratitude-body">
+                        <h3 class="gratitude-title">${message.title}</h3>
+                        <p class="gratitude-message">${message.message}</p>
+                        ${message.photoUrl ? `<img src="${message.photoUrl}" alt="Foto do agradecimento" class="gratitude-photo">` : ''}
+                    </div>
+                    
+                    <div class="gratitude-footer">
+                        <div>
+                            ${message.category ? `<span class="gratitude-category">${getCategoryLabel(message.category)}</span>` : ''}
+                        </div>
+                        <div class="gratitude-date">
+                            ${NetworkApp.formatDate(message.createdAt)}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function setupGratitudeEvents() {
+            const addBtn = document.getElementById('add-gratitude-btn');
+            const modal = document.getElementById('add-gratitude-modal');
+            const form = document.getElementById('gratitude-form');
+            const toSelect = document.getElementById('gratitude-to');
+            const otherGroup = document.getElementById('other-recipient-group');
+            const photoInput = document.getElementById('gratitude-photo');
+            const removePhotoBtn = document.getElementById('remove-photo');
+            
+            if (addBtn) {
+                addBtn.addEventListener('click', () => {
+                    NetworkApp.openModal(modal);
+                });
+            }
+            
+            if (form) {
+                form.addEventListener('submit', handleAddGratitude);
+            }
+            
+            if (toSelect) {
+                toSelect.addEventListener('change', (e) => {
+                    if (e.target.value === 'outros') {
+                        otherGroup.style.display = 'block';
+                        document.getElementById('gratitude-other').required = true;
+                    } else {
+                        otherGroup.style.display = 'none';
+                        document.getElementById('gratitude-other').required = false;
+                    }
+                });
+            }
+            
+            if (photoInput) {
+                photoInput.addEventListener('change', handlePhotoPreview);
+            }
+            
+            if (removePhotoBtn) {
+                removePhotoBtn.addEventListener('click', removePhotoPreview);
+            }
+        }
+        
+        function handlePhotoPreview(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    document.getElementById('preview-image').src = e.target.result;
+                    document.getElementById('photo-name').textContent = file.name;
+                    document.getElementById('photo-preview').classList.remove('hidden');
+                    document.querySelector('.file-upload-area').style.display = 'none';
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+        
+        function removePhotoPreview() {
+            document.getElementById('gratitude-photo').value = '';
+            document.getElementById('photo-preview').classList.add('hidden');
+            document.querySelector('.file-upload-area').style.display = 'block';
+        }
+        
+        async function handleAddGratitude(e) {
+            e.preventDefault();
+            
+            if (!NetworkApp.currentUser) {
+                NetworkApp.showNotification('Você precisa estar logada para enviar uma mensagem de agradecimento.', 'error');
+                return;
+            }
+            
+            try {
+                NetworkApp.showLoading();
+                
+                const formData = new FormData(e.target);
+                let photoUrl = null;
+                
+                // Upload photo if provided
+                const photo = formData.get('photo');
+                if (photo && photo.size > 0) {
+                    const photoPath = `gratitude/${NetworkApp.currentUser.uid}/${Date.now()}_${photo.name}`;
+                    photoUrl = await firebase.uploadFile(photo, photoPath);
+                }
+                
+                const gratitudeData = {
+                    title: formData.get('title'),
+                    message: formData.get('message'),
+                    to: formData.get('to'),
+                    other: formData.get('other') || null,
+                    category: formData.get('category'),
+                    photoUrl,
+                    userName: NetworkApp.currentUser.displayName,
+                    userPhoto: NetworkApp.currentUser.photoURL,
+                    userId: NetworkApp.currentUser.uid
+                };
+                
+                await firebase.addGratitudeMessage(gratitudeData);
+                
+                NetworkApp.closeModal(document.getElementById('add-gratitude-modal'));
+                NetworkApp.showNotification('Sua mensagem de agradecimento foi enviada com sucesso!', 'success');
+                
+                // Reload messages
+                document.getElementById('gratitude-grid').classList.add('hidden');
+                document.getElementById('gratitude-loading').classList.remove('hidden');
+                await loadGratitudeMessages();
+                
+                e.target.reset();
+                removePhotoPreview();
+                
+            } catch (error) {
+                console.error('Error adding gratitude message:', error);
+                NetworkApp.showNotification('Erro ao enviar mensagem de agradecimento.', 'error');
+            } finally {
+                NetworkApp.hideLoading();
+            }
+        }
+        
+        function getRecipientLabel(to, other) {
+            const labels = {
+                'vodacom': 'Vodacom',
+                'machel-fidus': 'Machel Fidus Foundation',
+                'digi-project': 'Digi Project',
+                'code-like-a-girl': 'Programa Code Like a Girl',
+                'escola-inhamissa': 'Escola Secundária de Inhamissa',
+                'mentores': 'Mentores e Mentoras',
+                'comunidade': 'Comunidade Network Like a Coders',
+                'outros': other || 'Outros'
+            };
+            return labels[to] || to;
+        }
+        
+        function getCategoryLabel(category) {
+            const labels = {
+                'educacao': 'Educação',
+                'emprego': 'Emprego',
+                'mentoria': 'Mentoria',
+                'networking': 'Networking',
+                'inspiracao': 'Inspiração',
+                'desenvolvimento': 'Desenvolvimento',
+                'recursos': 'Recursos'
+            };
+            return labels[category] || category;
+        }
+    </script>
+</body>
+</html>

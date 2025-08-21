@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - United Girls Society</title>
+    <!-- Font Awesome (local fallback) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <style>
+        :root {
+            --primary: #e74c3c;     /* Azul principal */
+            --primary-hover: #3a5a8a;
+            --secondary: #e67e22;   /* Laranja */
+            --tertiary: #27ae60;    /* Verde */
+            --accent: #9B59B6;      /* Roxo */
+            --text-primary: #2C3E50; /* Azul escuro */
+            --background: #f8f9fa;  /* Cinza claro */
+            --white: #ffffff;
+            --error: #e74c3c;
+            --success: #27ae60;
+            --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            --border: #e0e0e0;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 24px;
+            --spacing-xl: 32px;
+            --spacing-2xl: 40px;
+            --radius: 8px;
+            --radius-lg: 16px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            color: var(--text-primary);
+        }
+        
+        .header {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            padding: var(--spacing-md) var(--spacing-lg);
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+        
+        .nav-brand i {
+            font-size: 1.5rem;
+        }
+        
+        .nav-actions {
+            display: flex;
+            gap: var(--spacing-md);
+        }
+        
+        .btn {
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: var(--radius);
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+        
+        .btn-google {
+            background: #db4437;
+            color: white;
+            width: 100%;
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .btn-google:hover {
+            background: #c23321;
+        }
+        
+        .btn-full {
+            width: 100%;
+        }
+        
+        .register-container {
+            max-width: 500px;
+            margin: 30px auto;
+            padding: var(--spacing-2xl);
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-xl);
+            flex-grow: 1;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .register-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: var(--gradient-primary);
+        }
+        
+        .logo-icon {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+            font-size: 3.5rem;
+            color: var(--primary);
+        }
+        
+        h1 {
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+            font-size: 1.8rem;
+            position: relative;
+        }
+        
+        h1::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--secondary);
+            margin: var(--spacing-sm) auto 0;
+            border-radius: 2px;
+        }
+        
+        .input-group {
+            margin-bottom: var(--spacing-lg);
+            position: relative;
+        }
+        
+        .input-group i {
+            position: absolute;
+            left: 15px;
+            top: 15px;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+        
+        .password-container {
+            position: relative;
+        }
+        
+        .toggle-password {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            cursor: pointer;
+            color: var(--primary);
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 14px 14px 14px 45px;
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: all 0.3s;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+        
+        select {
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234a6fa5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 15px;
+        }
+        
+        input:focus, select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(74, 111, 165, 0.2);
+            outline: none;
+        }
+        
+        .auth-divider {
+            text-align: center;
+            margin: var(--spacing-lg) 0;
+            position: relative;
+        }
+        
+        .auth-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--border);
+        }
+        
+        .auth-divider span {
+            background: var(--white);
+            padding: 0 var(--spacing-md);
+            color: var(--text-primary);
+        }
+        
+        .links {
+            margin-top: var(--spacing-lg);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .links a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .links a:hover {
+            color: var(--secondary);
+            text-decoration: underline;
+        }
+        
+        footer {
+            background: var(--text-primary);
+            color: var(--white);
+            text-align: center;
+            padding: var(--spacing-lg);
+            margin-top: auto;
+        }
+        
+        .error-message {
+            color: var(--error);
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+            padding: var(--spacing-md);
+            background: rgba(231, 76, 60, 0.1);
+            border-radius: var(--radius);
+            font-weight: 500;
+            display: none;
+        }
+        
+        .success-message {
+            color: var(--success);
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+            padding: var(--spacing-md);
+            background: rgba(39, 174, 96, 0.1);
+            border-radius: var(--radius);
+            font-weight: 500;
+            display: none;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: var(--spacing-md);
+        }
+        
+        .form-row .input-group {
+            flex: 1;
+        }
+        
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            cursor: pointer;
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .checkbox-label input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+            padding: 0;
+            transform: scale(1.2);
+        }
+        
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .loading-spinner {
+            background: var(--white);
+            padding: var(--spacing-2xl);
+            border-radius: var(--radius-lg);
+            text-align: center;
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .loading-spinner i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        @media (max-width: 600px) {
+            .register-container {
+                margin: 20px;
+                padding: var(--spacing-xl);
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: var(--spacing-lg);
+            }
+            
+            .nav {
+                flex-direction: column;
+                gap: var(--spacing-md);
+            }
+            
+            .nav-actions {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <i class="fas fa-users"></i>
+                <span>United Girls Society</span>
+            </div>
+            
+            <div class="nav-actions">
+                <a href="login.html" class="btn btn-outline">Fazer Login</a>
+                <a href="index.html" class="btn btn-primary">Página Inicial</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <div class="register-container">
+            <div class="logo-icon">
+                <i class="fas fa-users"></i>
+            </div>
+            <h1>Junte-se à Nossa Comunidade</h1>
+            
+            <div id="error-message" class="error-message"></div>
+            <div id="success-message" class="success-message"></div>
+            
+            <!-- Google Signup -->
+            <button id="google-signup-btn" class="btn btn-google">
+                <i class="fab fa-google"></i>
+                Registrar com Google
+            </button>
+
+            <div class="auth-divider">
+                <span>ou</span>
+            </div>
+            
+            <form id="register-form">
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="name" placeholder="Nome completo" required>
+                </div>
+                
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="email" placeholder="Seu melhor email" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="input-group">
+                        <i class="fas fa-venus"></i>
+                        <select id="gender" required>
+                            <option value="" disabled selected>Gênero</option>
+                            <option value="feminino">Feminino</option>
+                            <option value="nao-binario">Não-binário</option>
+                            <option value="outro">Outro</option>
+                            <option value="prefiro-nao-dizer">Prefiro não dizer</option>
+                        </select>
+                    </div>
+                    
+                    <div class="input-group">
+                        <i class="fas fa-birthday-cake"></i>
+                        <input type="date" id="birthdate" required>
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <input type="text" id="location" placeholder="Cidade e país" required>
+                </div>
+                
+                <div class="input-group">
+                    <div class="password-container">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" placeholder="Senha (mínimo 6 caracteres)" required minlength="6">
+                        <i class="fas fa-eye toggle-password" id="toggle-password"></i>
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <div class="password-container">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="confirm-password" placeholder="Confirmar senha" required>
+                        <i class="fas fa-eye toggle-password" id="toggle-confirm-password"></i>
+                    </div>
+                </div>
+                
+                <div class="checkbox-label">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">Concordo com os <a href="#">Termos de Serviço</a> e <a href="#">Política de Privacidade</a></label>
+                </div>
+                
+                <div class="checkbox-label">
+                    <input type="checkbox" id="newsletter">
+                    <label for="newsletter">Desejo receber novidades e atualizações da United Girls Society</label>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-full">
+                    <i class="fas fa-user-plus"></i> Criar Conta
+                </button>
+            </form>
+            
+            <div class="links">
+                <a href="login.html"><i class="fas fa-sign-in-alt"></i> Já tem uma conta? Faça login</a>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>© 2023 United Girls Society - Empoderando mulheres ao redor do mundo</p>
+    </footer>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay hidden">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Processando registro...</p>
+        </div>
+    </div>
+
+    <!-- Firebase Scripts -->
+    <script type="module">
+        // Import Firebase modules
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+        import { 
+            getAuth, 
+            createUserWithEmailAndPassword,
+            updateProfile,
+            GoogleAuthProvider,
+            signInWithPopup
+        } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
+        import { 
+            getFirestore, 
+            collection, 
+            addDoc,
+            serverTimestamp 
+        } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBJ8CVC2s_cb8nBdbrhPCbVbqqh6Cb9Vco",
+            authDomain: "luna-bot-70962.firebaseapp.com",
+            projectId: "luna-bot-70962",
+            storageBucket: "luna-bot-70962.appspot.com",
+            messagingSenderId: "247837414432",
+            appId: "1:247837414432:web:f7f9df049b8cfdbd909845",
+            measurementId: "G-8Q1L3CS37J"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const googleProvider = new GoogleAuthProvider();
+
+        // Elementos do DOM
+        const registerForm = document.getElementById('register-form');
+        const googleSignupBtn = document.getElementById('google-signup-btn');
+        const errorMessage = document.getElementById('error-message');
+        const successMessage = document.getElementById('success-message');
+        const togglePassword = document.getElementById('toggle-password');
+        const toggleConfirmPassword = document.getElementById('toggle-confirm-password');
+        const loadingOverlay = document.getElementById('loading-overlay');
+
+        // Função para mostrar mensagens de erro
+        function showError(message) {
+            errorMessage.textContent = message;
+            errorMessage.style.display = 'block';
+            successMessage.style.display = 'none';
+            
+            // Rolagem suave para a mensagem de erro
+            errorMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        // Função para mostrar mensagens de sucesso
+        function showSuccess(message) {
+            successMessage.textContent = message;
+            successMessage.style.display = 'block';
+            errorMessage.style.display = 'none';
+        }
+
+        // Função para limpar mensagens
+        function clearMessages() {
+            errorMessage.style.display = 'none';
+            successMessage.style.display = 'none';
+        }
+
+        // Função para mostrar/ocultar loading
+        function setLoading(isLoading) {
+            loadingOverlay.classList.toggle('hidden', !isLoading);
+        }
+
+        // Função para alternar visibilidade da senha
+        function togglePasswordVisibility(inputId, icon) {
+            const passwordInput = document.getElementById(inputId);
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+
+        // Adicionar event listeners para toggle de senha
+        if (togglePassword) {
+            togglePassword.addEventListener('click', () => {
+                togglePasswordVisibility('password', togglePassword);
+            });
+        }
+
+        if (toggleConfirmPassword) {
+            toggleConfirmPassword.addEventListener('click', () => {
+                togglePasswordVisibility('confirm-password', toggleConfirmPassword);
+            });
+        }
+
+        // Registro com email e senha
+        if (registerForm) {
+            registerForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                clearMessages();
+                setLoading(true);
+
+                // Obter valores dos campos
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const gender = document.getElementById('gender').value;
+                const birthdate = document.getElementById('birthdate').value;
+                const location = document.getElementById('location').value.trim();
+                const password = document.getElementById('password').value;
+                const confirmPassword = document.getElementById('confirm-password').value;
+                const newsletter = document.getElementById('newsletter').checked;
+
+                // Validações
+                if (!name || !email || !gender || !birthdate || !location || !password || !confirmPassword) {
+                    showError('Por favor, preencha todos os campos obrigatórios.');
+                    setLoading(false);
+                    return;
+                }
+
+                if (password.length < 6) {
+                    showError('A senha deve ter no mínimo 6 caracteres.');
+                    setLoading(false);
+                    return;
+                }
+
+                if (password !== confirmPassword) {
+                    showError('As senhas não coincidem.');
+                    setLoading(false);
+                    return;
+                }
+
+                try {
+                    // Criar usuário no Firebase Auth
+                    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                    const user = userCredential.user;
+
+                    // Atualizar perfil do usuário com o nome
+                    await updateProfile(user, {
+                        displayName: name
+                    });
+
+                    // Salvar informações adicionais no Firestore
+                    await addDoc(collection(db, 'users'), {
+                        uid: user.uid,
+                        name: name,
+                        email: email,
+                        gender: gender,
+                        birthdate: birthdate,
+                        location: location,
+                        newsletter: newsletter,
+                        role: 'member',
+                        createdAt: serverTimestamp(),
+                        updatedAt: serverTimestamp()
+                    });
+
+                    // Mostrar mensagem de sucesso
+                    showSuccess('Registro realizado com sucesso! Redirecionando para a página inicial...');
+
+                    // Limpar formulário
+                    registerForm.reset();
+
+                    // Redirecionar para a página inicial após 3 segundos
+                    setTimeout(() => {
+                        window.location.href = 'gallery.html';
+                    }, 3000);
+
+                } catch (error) {
+                    console.error('Erro no registro:', error);
+                    
+                    // Tratamento de erros específicos
+                    let errorMessage = 'Ocorreu um erro durante o registro. Tente novamente.';
+                    
+                    if (error.code === 'auth/email-already-in-use') {
+                        errorMessage = 'Este email já está em uso. Por favor, use outro email ou faça login.';
+                    } else if (error.code === 'auth/invalid-email') {
+                        errorMessage = 'Email inválido. Por favor, insira um email válido.';
+                    } else if (error.code === 'auth/weak-password') {
+                        errorMessage = 'Senha muito fraca. Use pelo menos 6 caracteres.';
+                    } else if (error.code === 'auth/network-request-failed') {
+                        errorMessage = 'Problema de conexão. Verifique sua internet e tente novamente.';
+                    }
+                    
+                    showError(errorMessage);
+                } finally {
+                    setLoading(false);
+                }
+            });
+        }
+
+        // Registro com Google
+        if (googleSignupBtn) {
+            googleSignupBtn.addEventListener('click', async () => {
+                clearMessages();
+                setLoading(true);
+                
+                try {
+                    const result = await signInWithPopup(auth, googleProvider);
+                    const user = result.user;
+                    
+                    // Verificar se é um novo usuário
+                    const isNewUser = result._tokenResponse.isNewUser;
+                    
+                    if (isNewUser) {
+                        // Salvar informações adicionais no Firestore para novos usuários
+                        await addDoc(collection(db, 'users'), {
+                            uid: user.uid,
+                            name: user.displayName,
+                            email: user.email,
+                            role: 'member',
+                            provider: 'google',
+                            createdAt: serverTimestamp(),
+                            updatedAt: serverTimestamp()
+                        });
+                        
+                        showSuccess('Registro com Google realizado com sucesso!');
+                    } else {
+                        showSuccess('Login com Google realizado com sucesso!');
+                    }
+                    
+                    // Redirecionar para a página inicial após 2 segundos
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 2000);
+                    
+                } catch (error) {
+                    console.error('Erro no registro com Google:', error);
+                    showError('Falha no registro com Google. Tente novamente.');
+                } finally {
+                    setLoading(false);
+                }
+            });
+        }
+
+        // Verificar se há parâmetros de erro na URL (para redirecionamentos de login)
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const errorParam = urlParams.get('error');
+            
+            if (errorParam) {
+                showError(decodeURIComponent(errorParam));
+            }
+        });
+    </script>
+</body>
+</html>
